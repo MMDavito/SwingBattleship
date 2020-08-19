@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9eab4111-1c30-4e09-b53b-c46376e135b6" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1gJdH3n1SBul3bljMPvV3ulEXpR" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Model" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Model" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.App">
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="App" />
+      <module name="SwingBattleship" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Grid" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Grid" />
+      <module name="SwingBattleship" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.App" />
+        <item itemvalue="Application.Grid" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9eab4111-1c30-4e09-b53b-c46376e135b6" name="Default Changelist" comment="" />
+      <created>1597836540640</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1597836540640</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2039" y="495" width="374" height="585" key="#com.intellij.ide.util.MemberChooser" timestamp="1597843881592">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2039" y="495" width="374" height="585" key="#com.intellij.ide.util.MemberChooser/79.27.1841.1053/1920.0.1920.1080@79.27.1841.1053" timestamp="1597843881592" />
+    <state width="1795" height="278" key="GridCell.Tab.0.bottom" timestamp="1597849428853">
+      <screen x="79" y="27" width="1841" height="1053" />
+    </state>
+    <state width="1034" height="278" key="GridCell.Tab.0.bottom/79.27.1841.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1597840858805" />
+    <state width="1795" height="278" key="GridCell.Tab.0.bottom/79.27.1841.1053/1920.0.1920.1080@79.27.1841.1053" timestamp="1597849428853" />
+    <state width="1795" height="278" key="GridCell.Tab.0.center" timestamp="1597849428853">
+      <screen x="79" y="27" width="1841" height="1053" />
+    </state>
+    <state width="1034" height="278" key="GridCell.Tab.0.center/79.27.1841.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1597840858805" />
+    <state width="1795" height="278" key="GridCell.Tab.0.center/79.27.1841.1053/1920.0.1920.1080@79.27.1841.1053" timestamp="1597849428853" />
+    <state width="1795" height="278" key="GridCell.Tab.0.left" timestamp="1597849428853">
+      <screen x="79" y="27" width="1841" height="1053" />
+    </state>
+    <state width="1034" height="278" key="GridCell.Tab.0.left/79.27.1841.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1597840858805" />
+    <state width="1795" height="278" key="GridCell.Tab.0.left/79.27.1841.1053/1920.0.1920.1080@79.27.1841.1053" timestamp="1597849428853" />
+    <state width="1795" height="278" key="GridCell.Tab.0.right" timestamp="1597849428853">
+      <screen x="79" y="27" width="1841" height="1053" />
+    </state>
+    <state width="1034" height="278" key="GridCell.Tab.0.right/79.27.1841.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1597840858805" />
+    <state width="1795" height="278" key="GridCell.Tab.0.right/79.27.1841.1053/1920.0.1920.1080@79.27.1841.1053" timestamp="1597849428853" />
+    <state width="1795" height="344" key="GridCell.Tab.1.bottom" timestamp="1597845609387">
+      <screen x="79" y="27" width="1841" height="1053" />
+    </state>
+    <state width="1795" height="344" key="GridCell.Tab.1.bottom/79.27.1841.1053/1920.0.1920.1080@79.27.1841.1053" timestamp="1597845609387" />
+    <state width="1795" height="344" key="GridCell.Tab.1.center" timestamp="1597845609387">
+      <screen x="79" y="27" width="1841" height="1053" />
+    </state>
+    <state width="1795" height="344" key="GridCell.Tab.1.center/79.27.1841.1053/1920.0.1920.1080@79.27.1841.1053" timestamp="1597845609387" />
+    <state width="1795" height="344" key="GridCell.Tab.1.left" timestamp="1597845609387">
+      <screen x="79" y="27" width="1841" height="1053" />
+    </state>
+    <state width="1795" height="344" key="GridCell.Tab.1.left/79.27.1841.1053/1920.0.1920.1080@79.27.1841.1053" timestamp="1597845609387" />
+    <state width="1795" height="344" key="GridCell.Tab.1.right" timestamp="1597845609387">
+      <screen x="79" y="27" width="1841" height="1053" />
+    </state>
+    <state width="1795" height="344" key="GridCell.Tab.1.right/79.27.1841.1053/1920.0.1920.1080@79.27.1841.1053" timestamp="1597845609387" />
+    <state x="1920" y="0" width="1080" height="705" maximized="true" key="dock-window-1" timestamp="1597838626649">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="1920" y="0" width="1080" height="705" maximized="true" key="dock-window-1/79.27.1841.1053/1920.0.1920.1080@79.27.1841.1053" timestamp="1597838626649" />
+    <state x="593" y="27" width="586" height="1053" maximized="true" key="dock-window-2" timestamp="1597841203960">
+      <screen x="79" y="27" width="1841" height="1053" />
+    </state>
+    <state x="593" y="27" width="586" height="1053" maximized="true" key="dock-window-2/79.27.1841.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1597841203960" />
+  </component>
+</project>
