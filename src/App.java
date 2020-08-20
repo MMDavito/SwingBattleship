@@ -1,9 +1,9 @@
-import View.GameBoard;
+import View.GameBoardView;
 
 public class App {
-    static GameBoard board = new GameBoard();
+    static GameBoardView board = new GameBoardView();
     public static void main(String[]args){
         System.out.println("HEllow swojs");
-        board.populateList();
+        board.startGame();
     }
 }

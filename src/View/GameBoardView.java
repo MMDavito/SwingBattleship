@@ -1,29 +1,37 @@
 package View;
 
+import Controller.Controller;
+import Model.Player;
+
 import javax.swing.*;
+import javax.swing.event.MouseInputListener;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.LinkedList;
 
-public class GameBoard {
-    GameGrid topGrid = new GameGrid(new JPanel());
-    GameGrid botomGrid = new GameGrid(new JPanel());
+public class GameBoardView {
+    boolean isPlayer1Turn = true;
+    GameGrid topGrid;
+    GameGrid bottomGrid;
 
-    JList<String> topScore = new JList<>();
-    JList<String> bottomScore = new JList<>();
     JPanel topPanel = new JPanel();
     JPanel bottomPanel = new JPanel();
     JPanel window = new JPanel();
     JFrame windowF = new JFrame();
 
-    public void populateList() {
+    public void startGame() {
+        DefaultListModel<String> p1Score = new DefaultListModel<>();
+        DefaultListModel<String> p2Score = new DefaultListModel<>();
+        Controller gameController = new Controller(p1Score, p2Score);
+        topGrid = new GameGrid(new JPanel(), false, gameController);//player2 grid
+        bottomGrid = new GameGrid(new JPanel(), true,gameController);//player 1 grid
 
-        String[] tempArray = new String[5];
-        for (int i = 0; i < 5; i++) {
-            String temp = "Bajs" + i;
-            tempArray[i] = (temp);
-        }
-        topScore = new JList<String>(tempArray);
-        bottomScore = new JList<>(tempArray);
+        JList<String> topScore = new JList<>(p2Score);//p2Score
+        JList<String> bottomScore = new JList<>(p1Score);//p1Score
+
 
         window.setBackground(Color.BLACK);
         topPanel.setBackground(Color.BLACK);
@@ -42,7 +50,7 @@ public class GameBoard {
         c.weightx = 0.8;
         c.gridx = 0;
         topPanel.add(topGrid.grid, c);
-        bottomPanel.add(botomGrid.grid, c);
+        bottomPanel.add(bottomGrid.grid, c);
         c.gridx = 1;
         topPanel.add(topScore, c);
         bottomPanel.add(bottomScore, c);
@@ -51,10 +59,10 @@ public class GameBoard {
         window.setLayout(new GridBagLayout());
 
         c = new GridBagConstraints();
-        int top=5,right=0,bottom=5,left=0;
-        Insets insets = new Insets(top,left,bottom,right);
+        int top = 5, right = 0, bottom = 5, left = 0;
+        Insets insets = new Insets(top, left, bottom, right);
 
-        c.insets=insets;
+        c.insets = insets;
         // we want the layout to stretch the components in both directions
         c.fill = GridBagConstraints.BOTH;
         // if the total X weight is 0, then it won't stretch horizontally.
@@ -70,11 +78,12 @@ public class GameBoard {
         c.weighty = 0.5;
         c.gridy = 1;
         window.add(bottomPanel, c);
-windowF.add(window);
+        windowF.add(window);
         windowF.setPreferredSize(new Dimension(500, 500));
         windowF.setSize(500, 500);
         windowF.setLocationRelativeTo(null);
         windowF.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         windowF.setVisible(true);
+
     }
 }

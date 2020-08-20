@@ -4,37 +4,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.nio.file.Path;
 
-public class SquareButton extends JButton implements ActionListener {
-    @Override
-    public void actionPerformed(ActionEvent actionEvent) {
-        currState++;
-        System.out.println("Curr state len: "+STATE.values().length);
-        System.out.println("Curr state: "+currState);
-        if (currState == STATE.values().length) currState = 0;
-        switch (currState){
-            case 0://STATE.NULL.val
-                setIcon(null);
-                System.out.println("Hura 0");
-                break;
-            case 1://STATE.BOAT.getVal()
-                setIcon(B);
-                System.out.println("Hura 1");
+public class SquareButton extends JButton {
+    ImageIcon H, M, B, N;//Hit,Miss,Boat,Null
+    int currState = STATE.NULL.getVal();//null, 1 is ship/ship
+    public Integer x;
+    public Integer y;
 
-                break;
-            case 2://miss
-                setIcon(M);
-                System.out.println("Hura 2");
-
-                break;
-            case 3://hit
-                setIcon(H);
-                System.out.println("Hura 3");
-
-                break;
-        }
-    }
 
     public enum STATE {
         NULL(0),
@@ -53,17 +29,20 @@ public class SquareButton extends JButton implements ActionListener {
         }
     }
 
-    ImageIcon H, M, B, N;//Hit,Miss,Boat,Null
-    int currState = STATE.NULL.getVal();//null, 1 is ship/ship
-
-    public SquareButton() {
+    public SquareButton(Integer x,Integer y) {
+        if (x!=null&&y!=null){//To not allow for the one being set to a Integer without the other.
+            this.x=x;
+            this.y=y;
+        }
+        /*
         H = new ImageIcon(this.getClass().getResource("images/" + STATE.HIT.getVal() + ".jpg"));
         M = new ImageIcon(this.getClass().getResource("images/" + STATE.MISS.getVal() + ".png"));
         B = new ImageIcon(this.getClass().getResource("images/" + STATE.BOAT.getVal() + ".jpg"));
         N = new ImageIcon(this.getClass().getResource("images/" + STATE.NULL.getVal() + ".png"));
+
+         */
         this.setPreferredSize(new Dimension(50,50));
         //this.setSize(10,10);
-        addActionListener(this);//Move this to GameBoard and use XObutton.addListener(this) so it triggers in controller
 
     }
 }
