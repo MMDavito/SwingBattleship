@@ -1,6 +1,8 @@
 package Controller;
 
 import Model.Player;
+import Model.SHIP;
+import Model.Ship;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -18,21 +20,33 @@ public class Controller {
     private boolean isGameOver = false;
     private DefaultListModel<String> p1ScoreBoard;
     private DefaultListModel<String> p2ScoreBoard;
+    int gameRound = 0;//Indexes each player2 round, player2 shots first.
 
-    public Controller(DefaultListModel<String> p1ScoreBoard, DefaultListModel<String> p2ScoreBoard) {
-        player1 = new Player("Player_1");
-        player2 = new Player("Player_2");
+    public Controller(DefaultListModel<String> p1ScoreBoard, DefaultListModel<String> p2ScoreBoard,Player player1,Player player2) {
+        //player1 = new Player("Player_1");
+        //player2 = new Player("Player_2");
+        this.player1=player1;
+        this.player2=player2;
         this.p1ScoreBoard = p1ScoreBoard;
         this.p2ScoreBoard = p2ScoreBoard;
-        ArrayList<String> arrayList = new ArrayList<>(5);
-        String[] tempArray = new String[5];
+        ArrayList<String> p1StringScores = new ArrayList<>(10);
+        ArrayList<String> p2StringScores = new ArrayList<>(10);
+        ArrayList<Integer> p1Scores = player1.getFleetStatus();
+        ArrayList<Integer> p2Scores = player2.getFleetStatus();
+        for (int i = 0; i < p1Scores.size(); i++) {
+            p1StringScores.add(SHIP.values()[i].toString() + ":");
+            p1StringScores.add(p1Scores.get(i).toString());
+            p2StringScores.add(SHIP.values()[i].toString() + ": ");
+            p2StringScores.add(p2Scores.get(i).toString());
+        }
+        /*
         for (int i = 0; i < 5; i++) {
             String temp = "Bajs" + i;
-            tempArray[i] = (temp);
             arrayList.add(temp);
         }
-        this.p1ScoreBoard.addAll(arrayList);
-        this.p2ScoreBoard.addAll(arrayList);
+        */
+        this.p1ScoreBoard.addAll(p1StringScores);
+        this.p2ScoreBoard.addAll(p2StringScores);
         //ListModel<String> p1LModel = this.p1ScoreBoard.getModel();
 
         //ListModel<String> p2LModel = this.p2ScoreBoard.getModel();
@@ -46,6 +60,7 @@ public class Controller {
         isGameOver = true;
         player1.setGameOver();
         player2.setGameOver();
+        updateList();
     }
 
     /**
@@ -53,23 +68,38 @@ public class Controller {
      * Allows skipping turns, so view need to control shooting.
      */
     public void switchTurn() {
-        if (isP1Turn) {
+        if (isGameOver()){
+            System.out.println("isGamover");
+            updateList();}
+        else if (isP1Turn) {
             if (!isGameStarted) {
                 if (!player1.canGameStart()) return;
                 isP1Turn = false;
             } else if (isPlayerLoser(player2)) {
                 setGameOver();
+            } else{
+                updateList();
+                isP1Turn = false;
             }
         }
         //Else is p2 turn
-        if (!isGameStarted) {
+        else if (!isGameStarted) {
             if (!player2.canGameStart()) return;
-            isP1Turn = true;
-            isGameStarted=true;
+            isP1Turn = false;//Lets p2 guess first since already at keyboard
+            isGameStarted = true;
             player1.startGame();
             player2.startGame();
+            gameRound = 1;
+            System.out.println("Round: " + gameRound);
+
+
         } else if (isPlayerLoser(player1)) {
             setGameOver();
+        } else {
+            gameRound++;
+            System.out.println("Round: " + gameRound);
+            updateList();
+            isP1Turn = true;
         }
     }
 
@@ -79,6 +109,15 @@ public class Controller {
             if (health > 0) return false;
         }
         return true;
+    }
+
+    public void updateList() {
+        ArrayList<Integer> p1Scores = player1.getFleetStatus();
+        ArrayList<Integer> p2Scores = player2.getFleetStatus();
+        for (int i=0;i<p1Scores.size();i++){
+            p1ScoreBoard.set((i*2)+1,p1Scores.get(i).toString());
+            p2ScoreBoard.set((i*2)+1,p2Scores.get(i).toString());
+        }
     }
 
     public boolean isGameStarted() {

@@ -109,6 +109,15 @@ public class Player {
      * @throws IllegalStateException If trying to shoot before game is started.
      */
     public boolean isShotHit(Coordinate coordinate) throws IllegalStateException {
+        HelperClass helperClass=new HelperClass();
+        if (helperClass.CHEAT){
+            System.out.println("YOU BLOODY CHEATER!!!!");
+            for (Ship ship :ships){
+                ship.health=0;
+            }
+            return true;
+        }
+
         if (!isGameStarted) throw new IllegalStateException("Can not shoot before game starts!");
         boolean isHit = gameBoard.shoot(coordinate);//Throws exception if boat is previously hit. TODO TEST!
         numShots++;

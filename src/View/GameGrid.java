@@ -11,9 +11,10 @@ public class GameGrid {
     private HelperClass helperClass = new HelperClass();
     //private boolean isGameStarted = false;//can place || click if false, and it is player turn.
     //public boolean isGameOver = false; //will probably not be used TODO: Remove
+    private Coordinate currCor;
     public boolean isP1;//Is player 1.
     int shipIndex = 0;//Carrier
-    boolean isHor = true;
+    public boolean isHor = true;
     JPanel grid;
     final Coordinate coordinateHelper = new Coordinate(null, null);
     //Hashtable with linked nodes would be better than following, but requires time for design
@@ -23,16 +24,6 @@ public class GameGrid {
     public Player thisPlayer;
 
     public GameGrid(JPanel grid, boolean isP1, Controller gameController) {
-        grid.setFocusable(true);
-        InputMap inputMap = grid.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
-        inputMap.put(KeyStroke.getKeyStroke('z'), "Invert Hor");
-        ActionMap actionMap = grid.getActionMap();
-        actionMap.put("Invert Hor", new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                isHor = !isHor;//invert
-            }
-        });
 
         this.isP1 = isP1;
         this.gameController = gameController;
@@ -48,9 +39,11 @@ public class GameGrid {
                 tempButton.addMouseListener(new MouseListener() {
                     @Override
                     public void mouseClicked(MouseEvent mouseEvent) {
+                        if (gameController.isGameOver()){return;}
                         System.out.println("Pressed x:" + tempButton.x + ", y:" + tempButton.y);
                         Coordinate start = new Coordinate(tempButton.x, tempButton.y);
-                        if (isPlayersTurn()) {
+                        if ((isPlayersTurn() && !gameController.isGameStarted()) ||
+                                (!isPlayersTurn() && gameController.isGameStarted())) {
                             if (!gameController.isGameStarted()) deploy(start);
                             else {
                                 shot(start);
@@ -72,8 +65,9 @@ public class GameGrid {
 
                     @Override
                     public void mouseEntered(MouseEvent mouseEvent) {
-                        if (!isPlayersTurn()) return;
+                        if (!isPlayersTurn() || gameController.isGameStarted()) return;
                         Coordinate start = new Coordinate(tempButton.x, tempButton.y);
+                        currCor = start;
                         Coordinate end = getEnd(getShipSize(), start, isHor);
                         if (isOnBoard(end)) {
                             draw(start, end, Color.GRAY);
@@ -92,7 +86,8 @@ public class GameGrid {
 
                     @Override
                     public void mouseExited(MouseEvent mouseEvent) {
-                        if (!isPlayersTurn()) return;
+                        if (!isPlayersTurn() || gameController.isGameStarted()) return;
+                        currCor = null;
                         Coordinate coordinate = new Coordinate(tempButton.x, tempButton.y);
                         Coordinate end = getEnd(getShipSize(), coordinate, isHor);
                         if (isOnBoard(end)) {
@@ -125,7 +120,7 @@ public class GameGrid {
                     }
                 });
                 //Add the button to the grid.
-                squareButtons[x][y].setFocusable(false);
+                // squareButtons[x][y].setFocusable(false);
                 grid.add(squareButtons[x][y]);
             }
         }
@@ -252,12 +247,39 @@ public class GameGrid {
         System.out.println(gameController.player1.getName());
         System.out.println(gameController.player2.getName());
 
-        //if (!isPlayersTurn()) return;
         Player player = null;
         if (isP1) player = gameController.player1;
         else player = gameController.player2;
         thisPlayer = player;
-        System.out.println("Meaning this player is: "+thisPlayer.getName());
+        System.out.println("Meaning this player is: " + thisPlayer.getName());
+    }
+
+    public void invertHor() {
+        if (!isPlayersTurn()||gameController.isGameStarted()) return;
+        isHor = !isHor;
+        Coordinate start = new Coordinate(0, 0);
+        Coordinate end = new Coordinate(coordinateHelper.width-1, coordinateHelper.width-1);
+        draw(start, end, Color.LIGHT_GRAY);
+        start = currCor;
+        if (start==null) return;
+        drawShip(start);
+    }
+
+    public void drawShip(Coordinate start) {
+        Coordinate end = getEnd(SHIP.values()[shipIndex].getSize(), start, isHor);
+        if (isOnBoard(end)) {
+            draw(start, end, Color.GRAY);
+        } else {//end is outside board
+            int endX = start.getX();
+            int endY = start.getY();
+            if (isHor) {
+                endX = coordinateHelper.width - 1;
+            } else {
+                endY = coordinateHelper.height - 1;
+            }
+            end = new Coordinate(endX, endY);
+            draw(start, end, Color.RED);
+        }
     }
 }
 

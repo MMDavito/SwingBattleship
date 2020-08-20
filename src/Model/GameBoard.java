@@ -56,9 +56,9 @@ public class GameBoard {
         int endX = coordinate.getX();
         int endY = coordinate.getY();
         if (isHor) {
-            endX += ship.getSize();
+            endX += ship.getSize()-1;
         } else {//Is vertical
-            endY += ship.getSize();
+            endY += ship.getSize()-1;
         }
         Coordinate end = new Coordinate(endX, endY);
         if (!isOnBoard(end)) return null;
@@ -90,7 +90,7 @@ public class GameBoard {
         while (true) {//Iterate x-plane
             int y = startY;
             while (y <= endY) {//Iterate y-plane
-                if (boardSquares[x][y]!=null && boardSquares[x][y].getShip() != null) return false;
+                if (boardSquares[x][y] != null && boardSquares[x][y].getShip() != null) return false;
                 if (y == endY) break;
                 y++;
             }
@@ -183,8 +183,9 @@ public class GameBoard {
      */
     boolean isPreviouslyHit(Coordinate coordinate) throws IllegalArgumentException {
         if (!isOnBoard(coordinate)) throw new IllegalArgumentException("Coordinates outside of board.");
-        int x = coordinateHelper.getX();
-        int y = coordinateHelper.getY();
+        int x = coordinate.getX();
+        int y = coordinate.getY();
+        if (boardSquares[x][y] == null) return false;
         return boardSquares[x][y].isHit();
     }
 
@@ -201,7 +202,11 @@ public class GameBoard {
                 "Cannot shoot if game not started, or if game over.");
         if (isPreviouslyHit(coordinate)) throw new IllegalStateException("Coordinate is previously hit.");
         int x = coordinate.getX();
-        int y = coordinateHelper.getY();
+        int y = coordinate.getY();
+        if (boardSquares[x][y] == null) {
+            boardSquares[x][y] = new BoardSquare();
+            boardSquares[x][y].setHit();
+        }
         if (boardSquares[x][y].getShip() == null) {//Shot missed boat, but square will be marked.
             boardSquares[x][y].setHit();
             return false;

@@ -5,6 +5,7 @@ import Model.Player;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 
 public class GameBoardView {
     boolean isPlayer1Turn = true;
@@ -16,16 +17,17 @@ public class GameBoardView {
     JPanel window = new JPanel();
     JFrame windowF = new JFrame();
 
-    public void startGame() {
+    public void startGame(Player player1,Player player2) {
         DefaultListModel<String> p1Score = new DefaultListModel<>();
         DefaultListModel<String> p2Score = new DefaultListModel<>();
-        Controller gameController = new Controller(p1Score, p2Score);
+        JList<String> topScore = new JList<>();//p2Score
+        JList<String> bottomScore = new JList<>();//p1Score
+        bottomScore.setModel(p1Score);
+        topScore.setModel(p2Score);
+
+        Controller gameController = new Controller(p1Score, p2Score,player1,player2);
         topGrid = new GameGrid(new JPanel(), false, gameController);//player2 grid
-        bottomGrid = new GameGrid(new JPanel(), true,gameController);//player 1 grid
-
-        JList<String> topScore = new JList<>(p2Score);//p2Score
-        JList<String> bottomScore = new JList<>(p1Score);//p1Score
-
+        bottomGrid = new GameGrid(new JPanel(), true, gameController);//player 1 grid
 
         window.setBackground(Color.BLACK);
         topPanel.setBackground(Color.BLACK);
@@ -73,6 +75,16 @@ public class GameBoardView {
         c.gridy = 1;
         window.add(bottomPanel, c);
         windowF.add(window);
+        InputMap inputMap = window.getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        inputMap.put(KeyStroke.getKeyStroke('z'), "Invert Hor");
+        ActionMap actionMap = window.getActionMap();
+        actionMap.put("Invert Hor", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                topGrid.invertHor();
+                bottomGrid.invertHor();
+            }
+        });
         windowF.setPreferredSize(new Dimension(500, 500));
         windowF.setSize(500, 500);
         windowF.setLocationRelativeTo(null);

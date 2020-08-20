@@ -42,7 +42,7 @@
       <recent name="$PROJECT_DIR$/src/Model" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.App">
+  <component name="RunManager" selected="Application.WelcomeScreen">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="App" />
       <module name="SwingBattleship" />
@@ -57,8 +57,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="WelcomeScreen" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="View.WelcomeScreen" />
+      <module name="SwingBattleship" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="View.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.WelcomeScreen" />
         <item itemvalue="Application.App" />
         <item itemvalue="Application.Grid" />
       </list>
@@ -81,32 +95,36 @@
     </state>
     <state x="193" y="495" width="374" height="585" key="#com.intellij.ide.util.MemberChooser/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1597911902370" />
     <state x="2039" y="495" width="374" height="585" key="#com.intellij.ide.util.MemberChooser/79.27.1841.1053/1920.0.1920.1080@79.27.1841.1053" timestamp="1597843881592" />
-    <state width="1795" height="278" key="GridCell.Tab.0.bottom" timestamp="1597918558688">
+    <state x="207" y="27" width="1565" height="1053" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1597930957340">
+      <screen x="79" y="27" width="1841" height="1053" />
+    </state>
+    <state x="207" y="27" width="1565" height="1053" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1597930957340" />
+    <state width="1795" height="278" key="GridCell.Tab.0.bottom" timestamp="1597932295444">
       <screen x="79" y="27" width="1841" height="1053" />
     </state>
     <state width="1034" height="278" key="GridCell.Tab.0.bottom/79.27.1841.1053/1920.0.1080.1920@1920.0.1080.1920" timestamp="1597911175008" />
-    <state width="1795" height="278" key="GridCell.Tab.0.bottom/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1597918558688" />
+    <state width="1795" height="278" key="GridCell.Tab.0.bottom/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1597932295444" />
     <state width="1034" height="278" key="GridCell.Tab.0.bottom/79.27.1841.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1597840858805" />
     <state width="1795" height="344" key="GridCell.Tab.0.bottom/79.27.1841.1053/1920.0.1920.1080@79.27.1841.1053" timestamp="1597850500812" />
-    <state width="1795" height="278" key="GridCell.Tab.0.center" timestamp="1597918558688">
+    <state width="1795" height="278" key="GridCell.Tab.0.center" timestamp="1597932295444">
       <screen x="79" y="27" width="1841" height="1053" />
     </state>
     <state width="1034" height="278" key="GridCell.Tab.0.center/79.27.1841.1053/1920.0.1080.1920@1920.0.1080.1920" timestamp="1597911175008" />
-    <state width="1795" height="278" key="GridCell.Tab.0.center/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1597918558688" />
+    <state width="1795" height="278" key="GridCell.Tab.0.center/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1597932295444" />
     <state width="1034" height="278" key="GridCell.Tab.0.center/79.27.1841.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1597840858805" />
     <state width="1795" height="344" key="GridCell.Tab.0.center/79.27.1841.1053/1920.0.1920.1080@79.27.1841.1053" timestamp="1597850500812" />
-    <state width="1795" height="278" key="GridCell.Tab.0.left" timestamp="1597918558688">
+    <state width="1795" height="278" key="GridCell.Tab.0.left" timestamp="1597932295444">
       <screen x="79" y="27" width="1841" height="1053" />
     </state>
     <state width="1034" height="278" key="GridCell.Tab.0.left/79.27.1841.1053/1920.0.1080.1920@1920.0.1080.1920" timestamp="1597911175008" />
-    <state width="1795" height="278" key="GridCell.Tab.0.left/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1597918558688" />
+    <state width="1795" height="278" key="GridCell.Tab.0.left/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1597932295444" />
     <state width="1034" height="278" key="GridCell.Tab.0.left/79.27.1841.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1597840858805" />
     <state width="1795" height="344" key="GridCell.Tab.0.left/79.27.1841.1053/1920.0.1920.1080@79.27.1841.1053" timestamp="1597850500812" />
-    <state width="1795" height="278" key="GridCell.Tab.0.right" timestamp="1597918558688">
+    <state width="1795" height="278" key="GridCell.Tab.0.right" timestamp="1597932295444">
       <screen x="79" y="27" width="1841" height="1053" />
     </state>
     <state width="1034" height="278" key="GridCell.Tab.0.right/79.27.1841.1053/1920.0.1080.1920@1920.0.1080.1920" timestamp="1597911175008" />
-    <state width="1795" height="278" key="GridCell.Tab.0.right/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1597918558688" />
+    <state width="1795" height="278" key="GridCell.Tab.0.right/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1597932295444" />
     <state width="1034" height="278" key="GridCell.Tab.0.right/79.27.1841.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1597840858805" />
     <state width="1795" height="344" key="GridCell.Tab.0.right/79.27.1841.1053/1920.0.1920.1080@79.27.1841.1053" timestamp="1597850500812" />
     <state width="1795" height="344" key="GridCell.Tab.1.bottom" timestamp="1597850500812">
@@ -125,6 +143,10 @@
       <screen x="79" y="27" width="1841" height="1053" />
     </state>
     <state width="1795" height="344" key="GridCell.Tab.1.right/79.27.1841.1053/1920.0.1920.1080@79.27.1841.1053" timestamp="1597850500812" />
+    <state x="854" y="349" key="UIDesigner.ListEditorDialog" timestamp="1597929439180">
+      <screen x="79" y="27" width="1841" height="1053" />
+    </state>
+    <state x="854" y="349" key="UIDesigner.ListEditorDialog/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1597929439180" />
     <state x="1920" y="0" width="1080" height="1011" maximized="true" key="dock-window-1" timestamp="1597894805210">
       <screen x="1920" y="0" width="1080" height="1920" />
     </state>
@@ -134,5 +156,9 @@
       <screen x="79" y="27" width="1841" height="1053" />
     </state>
     <state x="593" y="27" width="586" height="1053" maximized="true" key="dock-window-2/79.27.1841.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1597841203960" />
+    <state x="663" y="253" key="run.anything.popup" timestamp="1597925301450">
+      <screen x="79" y="27" width="1841" height="1053" />
+    </state>
+    <state x="663" y="253" key="run.anything.popup/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1597925301450" />
   </component>
 </project>
