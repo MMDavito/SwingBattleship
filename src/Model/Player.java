@@ -59,7 +59,7 @@ public class Player {
      *
      * @throws IllegalStateException If there are ships that have not yet been deployed
      */
-    void startGame() throws IllegalStateException {
+    public void startGame() throws IllegalStateException {
         //Else game should start, if all ships are deployed.
         for (Ship s : ships) {
             if (!s.isDeployed) {
@@ -75,7 +75,7 @@ public class Player {
         return isGameOver;
     }
 
-    void setGameOver() {
+    public void setGameOver() {
         gameBoard.setGameOver();
         isGameOver = true;
     }
@@ -93,7 +93,7 @@ public class Player {
         throw new UnsupportedOperationException();
     }
 
-    ArrayList<Integer> getFleetStatus() {
+    public ArrayList<Integer> getFleetStatus() {
         ArrayList<Integer> healths = new ArrayList<>();
         for (Ship s : ships) {
             healths.add(s.getHealth());

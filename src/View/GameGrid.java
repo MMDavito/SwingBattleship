@@ -9,7 +9,7 @@ import java.awt.event.*;
 
 public class GameGrid {
     private HelperClass helperClass = new HelperClass();
-    public boolean isGameStarted = false;//can place || click if false, and it is player turn.
+    //private boolean isGameStarted = false;//can place || click if false, and it is player turn.
     //public boolean isGameOver = false; //will probably not be used TODO: Remove
     public boolean isP1;//Is player 1.
     int shipIndex = 0;//Carrier
@@ -30,10 +30,7 @@ public class GameGrid {
         actionMap.put("Invert Hor", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                System.out.println("PRESSED IT GOOD z");
                 isHor = !isHor;//invert
-                System.out.println("is p1?: " + isP1);
-                System.out.println("is hor? " + isHor);
             }
         });
 
@@ -53,7 +50,14 @@ public class GameGrid {
                     public void mouseClicked(MouseEvent mouseEvent) {
                         System.out.println("Pressed x:" + tempButton.x + ", y:" + tempButton.y);
                         Coordinate start = new Coordinate(tempButton.x, tempButton.y);
-                        deploy(start);
+                        if (isPlayersTurn()) {
+                            if (!gameController.isGameStarted()) deploy(start);
+                            else {
+                                shot(start);
+                                redraw();
+                                gameController.switchTurn();
+                            }
+                        }
                     }
 
                     @Override
@@ -73,19 +77,6 @@ public class GameGrid {
                         Coordinate end = getEnd(getShipSize(), start, isHor);
                         if (isOnBoard(end)) {
                             draw(start, end, Color.GRAY);
-                            //Iterate the coordinates given and place/deploy the ship.
-                            /*
-                            int x = coordinate.getX();
-                            while (true) {//Iterate x-plane
-                                int y = coordinate.getY();
-                                while (y <= end.getY()) {//Iterate y-plane
-                                    squareButtons[x][y].setBackground(Color.GRAY);
-                                    if (y == end.getY()) break;
-                                    y++;
-                                }
-                                if (x == end.getX()) break;
-                                x++;
-                            }*/
                         } else {//end is outside board
                             int endX = start.getX();
                             int endY = start.getY();
@@ -96,24 +87,6 @@ public class GameGrid {
                             }
                             end = new Coordinate(endX, endY);
                             draw(start, end, Color.RED);
-                            /*
-                            System.out.println("X:" + coordinate.getX());
-                            System.out.println("Y:" + coordinate.getY());
-                            System.out.println("EndX:" + endX);
-                            System.out.println("EndY:" + endY);
-                            //Fill with red to signal being outside board.
-                            int x = coordinate.getX();
-                            while (true) {//Iterate x-plane
-                                int y = coordinate.getY();
-                                while (y <= endY) {//Iterate y-plane
-                                    System.out.println("Trying to fill: X:" + x + ", Y:" + y);
-                                    squareButtons[x][y].setBackground(Color.RED);
-                                    if (y == endY) break;
-                                    y++;
-                                }
-                                if (x == endX) break;
-                                x++;
-                            }*/
                         }
                     }
 
@@ -123,21 +96,7 @@ public class GameGrid {
                         Coordinate coordinate = new Coordinate(tempButton.x, tempButton.y);
                         Coordinate end = getEnd(getShipSize(), coordinate, isHor);
                         if (isOnBoard(end)) {
-                            //Iterate the coordinates given and clear the filled squares.
-                            int x = coordinate.getX();
-                            /*
-                            while (true) {//Iterate x-plane
-                                int y = coordinate.getY();
-                                while (y <= end.getY()) {//Iterate y-plane
-                                    squareButtons[x][y].setBackground(Color.LIGHT_GRAY);
-                                    if (y == end.getY()) break;
-                                    y++;
-                                }
-                                if (x == end.getX()) break;
-                                x++;
-                             */
                             draw(coordinate, end, Color.LIGHT_GRAY);
-
                         } else {//end is outside board
                             int endX = coordinate.getX();
                             int endY = coordinate.getY();
@@ -172,6 +131,10 @@ public class GameGrid {
         }
     }
 
+    private void shot(Coordinate coordinate) {
+        thisPlayer.isShotHit(coordinate);
+    }
+
     boolean isOnBoard(Coordinate coordinate) {
         if (coordinate == null || coordinate.getX() == null) return false;
         else return true;
@@ -200,8 +163,6 @@ public class GameGrid {
     }
 
     public boolean isPlayersTurn() {
-        //System.out.println("Is p1? "+isP1);
-        //System.out.println("Is player 1s turn? "+gameController.isP1Turn());
         if (isP1) return gameController.isP1Turn();
         else return !gameController.isP1Turn();
     }
@@ -222,8 +183,9 @@ public class GameGrid {
         //Draw the ship.
         Coordinate end = getEnd(ship.getSize(), startCoord, isHor);
         draw(startCoord, end, Color.green);
-        if (shipIndex >= SHIP.values().length-1) {
-            System.out.println("Will start game, set not player ones turn and if is player two, start game");
+        if (shipIndex >= SHIP.values().length - 1) {
+            gameController.switchTurn();
+            redraw();
         } else shipIndex++;
 
     }
@@ -259,10 +221,22 @@ public class GameGrid {
 
     /**
      * Draw during game.
-     * only outprints hits in red. and misses in black.
+     * Prints hits in red. and misses in black. All else light_gray
      */
     public void redraw() {
-
+        BoardSquare[][] playerSquares = thisPlayer.gameBoard.boardSquares;
+        for (int x = 0; x < coordinateHelper.width; x++) {
+            for (int y = 0; y < coordinateHelper.height; y++) {
+                if (playerSquares[x][y] == null) {
+                    squareButtons[x][y].setBackground(Color.LIGHT_GRAY);
+                } else if (!playerSquares[x][y].isHit()) {
+                    squareButtons[x][y].setBackground(Color.LIGHT_GRAY);
+                } else {//Is hit
+                    if (playerSquares[x][y].getShip() == null) squareButtons[x][y].setBackground(Color.BLUE);//MISSED
+                    else squareButtons[x][y].setBackground(Color.RED);//HIT
+                }
+            }
+        }
     }
 
     public void clearAllUndeployed() {
@@ -275,11 +249,15 @@ public class GameGrid {
     }
 
     private void setPlayer() {
-        if (!isPlayersTurn()) return;
+        System.out.println(gameController.player1.getName());
+        System.out.println(gameController.player2.getName());
+
+        //if (!isPlayersTurn()) return;
         Player player = null;
         if (isP1) player = gameController.player1;
         else player = gameController.player2;
         thisPlayer = player;
+        System.out.println("Meaning this player is: "+thisPlayer.getName());
     }
 }
 
