@@ -76,7 +76,7 @@ public class Player {
         isGameStarted = true;
     }
 
-    boolean isGameOver() {
+    public boolean isGameOver() {
         return isGameOver;
     }
 

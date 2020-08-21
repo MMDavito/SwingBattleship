@@ -1,8 +1,6 @@
 package Controller;
 
-import Model.HighScore;
-import Model.Player;
-import Model.SHIP;
+import Model.*;
 import View.HighScoreScreen;
 
 import javax.swing.*;
@@ -16,6 +14,9 @@ public class GameController {
      * I Abandoned MVC when realised I was devolopeing desktop, and not API.
      * Which caused soome hacking and is
      */
+    public boolean isP1GODrawn = false;//Is player1 game over drawn?
+    public boolean isP2GODrawn = false;//Is player2 game over drawn?
+
     public Player player1;
     public Player player2;
     private boolean isP1Turn = true;//p1 always starts
@@ -27,6 +28,10 @@ public class GameController {
     public boolean p2IsAi = false;
 
     public GameController(DefaultListModel<String> p1ScoreBoard, DefaultListModel<String> p2ScoreBoard, Player player1, Player player2) {
+        if (player2.getClass().equals(AIPlayer.class)) {
+            if (new HelperClass().ISDEBUG) System.out.println("Is ai");
+            p2IsAi = true;
+        }
         this.player1 = player1;
         this.player2 = player2;
         this.p1ScoreBoard = p1ScoreBoard;
@@ -57,7 +62,7 @@ public class GameController {
         player1.setGameOver();
         player2.setGameOver();
 
-        updateList();//TODO open highscore screen.
+        updateList();
         saveHighScore();
     }
 
@@ -75,6 +80,20 @@ public class GameController {
         highScoreScreen.open();
     }
 
+    public boolean isPlayerDrawn(boolean isP1) {
+        if (isP1) {
+            if (!isP1GODrawn) {
+                isP1GODrawn = true;
+                return false;
+            } else return true;
+        } else {//is p2
+            if (!isP2GODrawn) {
+                isP2GODrawn = true;
+                return false;
+            } else return true;
+        }
+    }
+
     /**
      * Inverts players turn.
      * Allows skipping turns, so view need to control shooting.
@@ -83,19 +102,54 @@ public class GameController {
         if (isGameOver()) {
             System.out.println("isGamover");
             updateList();
-        } else if (isP1Turn) {
+            //isP1Turn = !isP1Turn;
+        }
+        if (isP1Turn) {
             if (!isGameStarted) {
                 if (!player1.canGameStart()) return;
                 isP1Turn = false;
+                if (p2IsAi) {
+                    gameRound = 1;
+                    ((AIPlayer) player2).placeAllShips();
+                    player1.startGame();
+                    player2.startGame();
+                    Coordinate coordinate = null;
+                    while (true) {
+                        coordinate = ((AIPlayer) player2).getRandomShot();
+                        if (player1.gameBoard.boardSquares[coordinate.getX()][coordinate.getY()] != null &&
+                                player1.gameBoard.boardSquares[coordinate.getX()][coordinate.getY()].isHit()) {
+                            continue;
+                        }
+                        break;
+                    }
+                    if (coordinate != null) player1.isShotHit(coordinate);
+
+                    isP1Turn = true;
+                    return;
+                }
             } else if (isPlayerLoser(player2)) {
                 setGameOver();
             } else {
+                if (p2IsAi) {
+                    Coordinate coordinate = null;
+                    while (true) {
+                        coordinate = ((AIPlayer) player2).getRandomShot();
+                        if (player1.gameBoard.boardSquares[coordinate.getX()][coordinate.getY()] != null &&
+                                player1.gameBoard.boardSquares[coordinate.getX()][coordinate.getY()].isHit()) {
+                            continue;
+                        }
+                        break;
+                    }
+                    if (coordinate != null) player1.isShotHit(coordinate);
+                    return;
+                }
                 updateList();
                 isP1Turn = false;
             }
         }
         //Else is p2 turn
         else if (!isGameStarted) {
+            // Is not ai
             if (!player2.canGameStart()) return;
             isP1Turn = false;//Lets p2 guess first since already at keyboard
             isGameStarted = true;
@@ -103,9 +157,8 @@ public class GameController {
             player2.startGame();
             gameRound = 1;
             System.out.println("Round: " + gameRound);
-
-
-        } else if (isPlayerLoser(player1)) {
+        } else if (
+                isPlayerLoser(player1)) {
             setGameOver();
         } else {
             gameRound++;
@@ -113,6 +166,7 @@ public class GameController {
             updateList();
             isP1Turn = true;
         }
+
     }
 
     public boolean isPlayerLoser(Player player) {

@@ -1,5 +1,7 @@
 package View;
 
+import Model.AIPlayer;
+import Model.HelperClass;
 import Model.Player;
 
 import javax.swing.*;
@@ -14,6 +16,7 @@ public class WelcomeScreen extends JDialog {
     private JTextField p2NameField;
     private javax.swing.JLabel JLabel;
     private JButton highScoresButton;
+    private JCheckBox player2AsAiCheckBox;
 
     /**
      * Contains main method and is the welcome screen.
@@ -100,10 +103,13 @@ public class WelcomeScreen extends JDialog {
             return;
         }
         Player player1 = new Player(p1Name);
+        boolean isAi = player2AsAiCheckBox.isSelected();
+        if (new HelperClass().ISDEBUG) System.out.println("IS AI?: " + isAi);
         Player player2 = new Player(p2Name);
 
         contentPane.setVisible(false);
-        new GameBoardView().startGame(player1, player2);
+        if (isAi) new GameBoardView().startGame(player1, new AIPlayer(p2Name));
+        else new GameBoardView().startGame(player1, player2);
         dispose();
     }
 

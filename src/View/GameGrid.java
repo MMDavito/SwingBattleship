@@ -37,6 +37,7 @@ public class GameGrid {
         setPlayer();
         this.grid = grid;
         grid.setBackground(null);
+        boolean isGameDrawn = false;
         grid.setLayout(new GridLayout(coordinateHelper.height, coordinateHelper.width));
         for (int y = 0; y < coordinateHelper.height; y++) {
             for (int x = 0; x < coordinateHelper.width; x++) {
@@ -49,9 +50,6 @@ public class GameGrid {
                 tempButton.addMouseListener(new MouseListener() {
                     @Override
                     public void mouseClicked(MouseEvent mouseEvent) {
-                        if (gameController.isGameOver()) {
-                            return;
-                        }
                         if (helperClass.ISDEBUG)
                             System.out.println("Pressed x:" + tempButton.x + ", y:" + tempButton.y);
                         Coordinate start = new Coordinate(tempButton.x, tempButton.y);
@@ -81,6 +79,12 @@ public class GameGrid {
 
                     @Override
                     public void mouseEntered(MouseEvent mouseEvent) {
+                        if (gameController.isGameOver()) {
+                            if (gameController.isPlayerDrawn(isP1)) return;
+                            if (helperClass.ISDEBUG)
+                                System.out.println("Is game drawn?" + gameController.isPlayerDrawn(isP1));
+                            drawGameOver();
+                        }
                         if (!isPlayersTurn() || gameController.isGameStarted()) return;
                         Coordinate start = new Coordinate(tempButton.x, tempButton.y);
                         currCor = start;
@@ -102,6 +106,12 @@ public class GameGrid {
 
                     @Override
                     public void mouseExited(MouseEvent mouseEvent) {
+                        if (gameController.isGameOver()) {
+                            if (gameController.isPlayerDrawn(isP1)) return;
+                            if (helperClass.ISDEBUG)
+                                System.out.println("Is game drawn?" + gameController.isPlayerDrawn(isP1));
+                            drawGameOver();
+                        }
                         if (!isPlayersTurn() || gameController.isGameStarted()) return;
                         currCor = null;
                         Coordinate coordinate = new Coordinate(tempButton.x, tempButton.y);
@@ -315,6 +325,28 @@ public class GameGrid {
             }
             end = new Coordinate(endX, endY);
             draw(start, end, Color.RED);
+        }
+    }
+
+    public void drawGameOver() {
+        if (!thisPlayer.isGameOver()) return;
+        draw(new Coordinate(0, 0), new Coordinate(coordinateHelper.width - 1, coordinateHelper.height - 1), Color.GRAY);
+        BoardSquare[][] boardSquares = thisPlayer.gameBoard.boardSquares;
+
+        int x = 0;
+        while (true) {//Iterate x-plane
+            int y = 0;
+            while (true) {//Iterate y-plane
+                if (boardSquares[x][y] != null && boardSquares[x][y].getShip() != null && boardSquares[x][y].isHit()) {
+                    squareButtons[x][y].setBackground(Color.RED);
+                } else if (boardSquares[x][y] != null && boardSquares[x][y].isHit()) {//not boat
+                    squareButtons[x][y].setBackground(Color.BLUE);
+                }
+                if (y == coordinateHelper.height - 1) break;
+                y++;
+            }
+            if (x == coordinateHelper.height - 1) break;
+            x++;
         }
     }
 }
