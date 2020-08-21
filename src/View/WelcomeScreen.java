@@ -12,12 +12,40 @@ public class WelcomeScreen extends JDialog {
     private JButton buttonCancel;
     private JTextField p1NameField;
     private JTextField p2NameField;
-    private JTextArea namesCanNotContainTextArea;
+    private javax.swing.JLabel JLabel;
+    private JButton highScoresButton;
 
     public WelcomeScreen() {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
+        highScoresButton.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+                HighScoreScreen highScoreScreen = new HighScoreScreen();
+                highScoreScreen.open();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent mouseEvent) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent mouseEvent) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent mouseEvent) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent mouseEvent) {
+
+            }
+        });
 
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

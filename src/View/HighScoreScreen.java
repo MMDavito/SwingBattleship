@@ -1,26 +1,30 @@
 package View;
 
 import Controller.Controller;
+import Model.HighScore;
 import Model.Player;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class HighScoreScreen extends JDialog {
     private JPanel contentPane;
     private JButton buttonExit;
-    private JList HighScore;
+    private JTable table1;
+    DefaultTableModel defaultTableModel;
     private Controller gameController;
     private boolean isP2AI;
 
-    public HighScoreScreen(Controller gameController, boolean isP2AI) {
-        if (gameController == null)
-            throw new IllegalArgumentException("Controller cannot be null");//Could test so players aren't null.
+    public HighScoreScreen() {
+        contentPane.setPreferredSize(new Dimension(600,200));
         setContentPane(contentPane);
         setModal(true);
-        this.gameController = gameController;
-        this.isP2AI = false;
-
+        defaultTableModel = new DefaultTableModel();
+        table1.setModel(defaultTableModel);
         buttonExit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onCancel();
@@ -50,22 +54,44 @@ public class HighScoreScreen extends JDialog {
 
     //POPULATE LIST:
     private void populateList() {
+        HighScore highScoreHelper = new HighScore();
+        LinkedList<HighScore> highscores = highScoreHelper.getHighscores();
+        /*
+        Could sort more advanced, like when two with same amount of rounds, it could sort based on
+        remaining health. But could also have an sort when pressing the list.
+        But since not javascript it would just be awful and it would save time to translate the entire project to
+        javascript.
+        */
+        highscores.sort((h1, h2) -> (h1.getGameRound() - h2.getGameRound()));
+        //hStrings.add()
+        LinkedList<String> columns = highScoreHelper.getCsvColumns();
+        for (String column : columns) {
+            System.out.println("Col: "+column);
+            defaultTableModel.addColumn(column);
+        }
+        for (HighScore highScore : highscores) {
+            defaultTableModel.addRow(highScore.toArray());
+        }
+        defaultTableModel.fireTableDataChanged();
+        System.out.println("IM THA GRATEST");
+        return;
     }
-
-    /**
-     * Do not save ai scores.
-     * only when win against, and it saves "against ai" as oponent.
-     *
-     * @param player1
-     * @param player2
-     * @param isP2AI
-     */
-    public void open() {
+public void open(){
+    HighScoreScreen dialog = new HighScoreScreen();
+    dialog.populateList();
+    dialog.pack();
+    dialog.setVisible(true);
+    System.out.println("Is visible");
+    //System.exit(0);
+}
+    public static void main(String[]args) {
         HighScoreScreen dialog = new HighScoreScreen();
+        dialog.populateList();
         dialog.pack();
         dialog.setVisible(true);
-        System.exit(0);
+
+        System.out.println("Is visible");
+        //System.exit(0);
     }
 
-    public void printHighscore()
 }

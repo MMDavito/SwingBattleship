@@ -1,7 +1,5 @@
 package Model;
 
-import netscape.javascript.JSObject;
-
 import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -9,6 +7,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class HighScore {
+    private final String highscoreFileName = "data/high_score.csv";
+
     private String winnerName;
     private String looserName;
     private boolean wasWinnerAI = false;
@@ -18,15 +18,40 @@ public class HighScore {
     private boolean isP1Winner;
     private Player player1;
     private Player player2;
-    private boolean isClassNull = true;//lasy verification that it can call printToCsv.
+    private boolean isClassNull = true;//lazy verification that it can call printToCsv.
     public boolean wasScoreWritten = false;
+
+    /**
+     * everything is null. Cannot write file to file when using this constructor.
+     */
+    public HighScore() {
+
+    }
 
     /**
      * Only to be used for reading from file and using on the highscoreboard.
      * (readFromFile, get string)
+     * if line is empty or null it returns an empty object.
      */
-    public HighScore() {
-        throw new UnsupportedOperationException("Not implemented yet");
+    private HighScore(String line) {
+        if (line == null || line.length() == 0) return;
+        final int start = 0;
+        int end = line.indexOf(',');
+        this.winnerName = line.substring(start, end);
+        line = line.substring(end + 1);
+        end = line.indexOf(',');
+        this.looserName = line.substring(0, end);
+        line = line.substring(end + 1);
+        end = line.indexOf(',');
+        this.gameRound = Integer.parseInt(line.substring(0, end));
+        line = line.substring(end + 1);
+        end = line.indexOf(',');
+        this.winnersScore = Integer.parseInt(line.substring(0, end));
+        line = line.substring(end + 1);
+        end = line.indexOf(',');
+        this.wasAgainstAI = line.substring(0, end).equals("true");
+        line = line.substring(end + 1);
+        this.wasWinnerAI = line.substring(0, line.length()-1).equals("true");
     }
 
     /**
@@ -63,22 +88,61 @@ public class HighScore {
             looserName = player1.getName();
             winnersScore = getScore()[1];
         }
+        isClassNull=false;
+    }
+
+    /**
+     * Reads highscores.
+     * @return
+     */
+    public LinkedList<HighScore> getHighscores() {
+        Path path = Paths.get(highscoreFileName);
+        File file = path.toFile();
+        if (!file.canRead()) return null;
+        List<String> lines = readFile(file);
+        LinkedList<HighScore> highScores = new LinkedList<>();
+        boolean isFirst = true;
+        for (String line : lines) {
+            if (isFirst) {
+                isFirst = false;
+                continue;
+            }
+            System.out.println("Line is: "+line);
+            highScores.add(new HighScore(line));
+        }
+        return highScores;
     }
 
     /**
      * The order of the csv columns.
+     *
      * @return
      */
-    public List<String> getCsvColumns() {
-        List<String> csvColumns = new LinkedList<>();
+    public LinkedList<String> getCsvColumns() {
+        LinkedList<String> csvColumns = new LinkedList<>();
         csvColumns.add("Winner");
         csvColumns.add("Looser");
         csvColumns.add("Round");
         csvColumns.add("Remaining_Health");
-        csvColumns.add("WasAgainstAI");
+        csvColumns.add("wasAgainstAI");
         csvColumns.add("wasWinnerAI");
-        return getCsvColumns();
+        return csvColumns;
     }
+
+    /**
+     * Should probably return string, but this is exciting.
+     * @return
+     */
+    public Object[] toArray(){
+        Object[] retArr = new Object[getCsvColumns().size()];
+        retArr[0]=this.winnerName;
+        retArr[1]=this.looserName;
+        retArr[2]=this.gameRound;
+        retArr[3]=this.winnersScore;
+        retArr[4]=this.wasAgainstAI;
+        retArr[5]=this.wasWinnerAI;
+        return retArr;
+    } 
 
     /**
      * Only used when appending to csv file.
@@ -105,11 +169,13 @@ public class HighScore {
         return sb.toString();
     }
 
+    /**
+     * @throws IllegalStateException If not constructed using the constructor with two players, or if already written.
+     */
     public void writeToFile() throws IllegalStateException {
         if (isClassNull) throw new IllegalStateException("Class was not probarly constructed");
         if (wasScoreWritten) throw new IllegalStateException("Cannot print score twice");
 
-        String highscoreFileName = "data/high_score.csv";
         Path path = Paths.get(highscoreFileName);
         File file = path.toFile();
         if (!file.exists()) {
