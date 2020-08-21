@@ -52,7 +52,8 @@ public class GameGrid {
                         if (gameController.isGameOver()) {
                             return;
                         }
-                        System.out.println("Pressed x:" + tempButton.x + ", y:" + tempButton.y);
+                        if (helperClass.ISDEBUG)
+                            System.out.println("Pressed x:" + tempButton.x + ", y:" + tempButton.y);
                         Coordinate start = new Coordinate(tempButton.x, tempButton.y);
                         if ((isPlayersTurn() && !gameController.isGameStarted()) ||
                                 (!isPlayersTurn() && gameController.isGameStarted())) {

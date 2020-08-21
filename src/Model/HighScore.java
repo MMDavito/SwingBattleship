@@ -3,13 +3,14 @@ package Model;
 import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 
 /**
- * This class does not provide any method for timestamp for knowing what time highscore was acheived.
- * It should always be included, along with an identifier.
- * But the requirement did not specify any timestamp.
+ * Uses java.time.LocalDateTime.now();
+ * which can be argued to be okay when not dealing with databases.
+ * It is unformated.
  */
 public class HighScore {
     private final String highscoreFileName = "data/high_score.csv";
@@ -25,6 +26,7 @@ public class HighScore {
     private Player player2;
     private boolean isClassNull = true;//lazy verification that it can call printToCsv.
     public boolean wasScoreWritten = false;
+    private LocalDateTime dateTime;
 
     /**
      * everything is null. Cannot write file to file when using this constructor.
@@ -56,7 +58,16 @@ public class HighScore {
         end = line.indexOf(',');
         this.wasAgainstAI = line.substring(0, end).equals("true");
         line = line.substring(end + 1);
-        this.wasWinnerAI = line.substring(0, line.length() - 1).equals("true");
+        end = line.indexOf(',');
+        if (end == -1) end = line.length() - 1;
+        this.wasWinnerAI = line.substring(0, end).equals("true");
+        if (end == line.length() - 1) {
+            dateTime = null;
+        } else {
+            line = line.substring(end + 1);
+            dateTime = LocalDateTime.parse(line);
+        }
+
     }
 
     /**
@@ -99,6 +110,7 @@ public class HighScore {
             looserName = player1.getName();
             winnersScore = getScore()[1];
         }
+        dateTime = java.time.LocalDateTime.now();
         isClassNull = false;
     }
 
@@ -137,6 +149,7 @@ public class HighScore {
         csvColumns.add("Remaining_Health");
         csvColumns.add("wasAgainstAI");
         csvColumns.add("wasWinnerAI");
+        csvColumns.add("dateTime");
         return csvColumns;
     }
 
@@ -153,6 +166,7 @@ public class HighScore {
         retArr[3] = this.winnersScore;
         retArr[4] = this.wasAgainstAI;
         retArr[5] = this.wasWinnerAI;
+        retArr[6] = this.dateTime;
         return retArr;
     }
 
@@ -178,6 +192,8 @@ public class HighScore {
         sb.append(wasAgainstAI);
         sb.append(",");
         sb.append(wasWinnerAI);
+        sb.append(",");
+        sb.append(dateTime);
         return sb.toString();
     }
 
@@ -332,5 +348,9 @@ public class HighScore {
 
     public boolean isP1Winner() {
         return isP1Winner;
+    }
+
+    public LocalDateTime getDateTime() {
+        return dateTime;
     }
 }
