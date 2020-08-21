@@ -1,9 +1,9 @@
 package View;
 
-import Model.Game;
 import Model.Player;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 
 public class WelcomeScreen extends JDialog {
@@ -12,6 +12,7 @@ public class WelcomeScreen extends JDialog {
     private JButton buttonCancel;
     private JTextField p1NameField;
     private JTextField p2NameField;
+    private JTextArea namesCanNotContainTextArea;
 
     public WelcomeScreen() {
         setContentPane(contentPane);
@@ -48,14 +49,23 @@ public class WelcomeScreen extends JDialog {
 
     private void onOK() {
         // Check if names are null, else create two new players.
-        contentPane.setVisible(false);
         String p1Name = p1NameField.getText();
-        if (p1Name == null || p1Name.length() == 0) p1Name = "Player_1";
+        if (p1Name == null || p1Name.length() == 0){ p1Name = "Player_1";}else if(p1Name.contains(",")){
+            p1NameField.setBackground(Color.red);
+            return;
+        }
         String p2Name = p2NameField.getText();
-        if (p2Name == null || p2Name.length() == 0) p2Name = "Player_1";
+        if (p2Name == null || p2Name.length() == 0) {
+            p2Name = "Player_2";
+        } else if (p2Name.contains(",")) {
+            p2NameField.setBackground(Color.red);
+            return;
+        }
         Player player1 = new Player(p1Name);
         Player player2 = new Player(p2Name);
-        new GameBoardView().startGame(player1,player2);
+
+        contentPane.setVisible(false);
+        new GameBoardView().startGame(player1, player2);
 
         dispose();//TODO TEST
 

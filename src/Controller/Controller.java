@@ -60,7 +60,11 @@ public class Controller {
         isGameOver = true;
         player1.setGameOver();
         player2.setGameOver();
-        updateList();
+
+        updateList();//TODO open highscore screen.
+    }
+    private void saveHighScore(){
+
     }
 
     /**
@@ -102,7 +106,6 @@ public class Controller {
             isP1Turn = true;
         }
     }
-
     public boolean isPlayerLoser(Player player) {
         List<Integer> shipsHealth = player.getFleetStatus();
         for (int health : shipsHealth) {
