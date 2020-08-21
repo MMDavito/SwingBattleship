@@ -51,10 +51,12 @@ public class HighScore {
         end = line.indexOf(',');
         this.wasAgainstAI = line.substring(0, end).equals("true");
         line = line.substring(end + 1);
-        this.wasWinnerAI = line.substring(0, line.length()-1).equals("true");
+        this.wasWinnerAI = line.substring(0, line.length() - 1).equals("true");
     }
 
     /**
+     * Returns without Construction if any of the players lacks name
+     * <p>
      * Throws exceptions if called before game is over.
      * Or if both players have zero in score/health.
      *
@@ -64,13 +66,17 @@ public class HighScore {
      * @param p2isAI    If p2 was AI.
      */
     public HighScore(Player player1, Player player2, int gameRound, boolean p2isAI) {
+        if (player1 == null || player2 == null) return;
+        if (player1.getName() == null || player1.getName().length() == 0) return;
+        if (player2.getName() == null || player2.getName().length() == 0) return;
+
+        this.player1 = player1;
+        this.player2 = player2;
         /*
         Calling get score 3 times is still O(N), O(3*N)=O(3*5), it is stupid, since it is bound to happen many times.
         But structure is generally bad, and the model needs its verifications.
         This should have been a private class that was called from an game class in model, but did not have time.
          */
-        this.player1 = player1;
-        this.player2 = player2;
         this.gameRound = gameRound;
         this.wasAgainstAI = p2isAI;
         if (!isGameOver()) return;
@@ -88,11 +94,12 @@ public class HighScore {
             looserName = player1.getName();
             winnersScore = getScore()[1];
         }
-        isClassNull=false;
+        isClassNull = false;
     }
 
     /**
      * Reads highscores.
+     *
      * @return
      */
     public LinkedList<HighScore> getHighscores() {
@@ -130,18 +137,19 @@ public class HighScore {
 
     /**
      * Should probably return string, but this is exciting.
+     *
      * @return
      */
-    public Object[] toArray(){
+    public Object[] toArray() {
         Object[] retArr = new Object[getCsvColumns().size()];
-        retArr[0]=this.winnerName;
-        retArr[1]=this.looserName;
-        retArr[2]=this.gameRound;
-        retArr[3]=this.winnersScore;
-        retArr[4]=this.wasAgainstAI;
-        retArr[5]=this.wasWinnerAI;
+        retArr[0] = this.winnerName;
+        retArr[1] = this.looserName;
+        retArr[2] = this.gameRound;
+        retArr[3] = this.winnersScore;
+        retArr[4] = this.wasAgainstAI;
+        retArr[5] = this.wasWinnerAI;
         return retArr;
-    } 
+    }
 
     /**
      * Only used when appending to csv file.
@@ -169,10 +177,13 @@ public class HighScore {
     }
 
     /**
+     * Writes highscore information to file.
+     * If object is constructed using the constructor with 2 players, and not previously written.
+     *
      * @throws IllegalStateException If not constructed using the constructor with two players, or if already written.
      */
     public void writeToFile() throws IllegalStateException {
-        if (isClassNull) throw new IllegalStateException("Class was not probarly constructed");
+        if (isClassNull) throw new IllegalStateException("Class was not properly constructed");
         if (wasScoreWritten) throw new IllegalStateException("Cannot print score twice");
 
         Path path = Paths.get(highscoreFileName);

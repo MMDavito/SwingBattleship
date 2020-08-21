@@ -9,19 +9,24 @@ public class Player {
     protected boolean isGameOver = false;
     private String name = null;
     private int numShots = 0;
+
     /**
      * Initiates an list of ships with the index specified by the enums in <code>SHIP</code>.
      *
-     * @param name If null or empty the name of the player will remain empty, else it will be used in high-score.
+     * @param name If null or empty the name of the player will remain empty. Which would not allow save off highscore.
+     *             , else it will be used in high-score.
      */
     public Player(String name) {
         setName(name);
         SHIP[] shipEnums = SHIP.values();
-        for(SHIP shipEnum: shipEnums){
+        for (SHIP shipEnum : shipEnums) {
             ships.add(new Ship(shipEnum));
         }
     }
 
+    /**
+     * @return Number of shots the player have been shot with.
+     */
     public int getNumShots() {
         return numShots;
     }
@@ -109,11 +114,11 @@ public class Player {
      * @throws IllegalStateException If trying to shoot before game is started.
      */
     public boolean isShotHit(Coordinate coordinate) throws IllegalStateException {
-        HelperClass helperClass=new HelperClass();
-        if (helperClass.CHEAT){
+        HelperClass helperClass = new HelperClass();
+        if (helperClass.CHEAT) {
             System.out.println("YOU BLOODY CHEATER!!!!");
-            for (Ship ship :ships){
-                ship.health=0;
+            for (Ship ship : ships) {
+                ship.health = 0;
             }
             return true;
         }

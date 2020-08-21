@@ -66,6 +66,10 @@ public class GameController {
      */
     private void saveHighScore() {
         HighScore highScore = new HighScore(player1, player2, gameRound, p2IsAi);
+        if (highScore.isClassNull()) {
+            System.out.println("Something happened when constructing highscore, probably player1 or player2 does not have any valid name");
+            return;
+        }
         highScore.writeToFile();
         HighScoreScreen highScoreScreen = new HighScoreScreen();
         highScoreScreen.open();
