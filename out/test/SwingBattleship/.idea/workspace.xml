@@ -56,9 +56,16 @@
       <recent name="$PROJECT_DIR$/src/Model" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.WelcomeScreen">
+  <component name="RunManager" selected="JUnit.PlayerTest">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="App" />
+      <module name="SwingBattleship" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Grid" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Grid" />
       <module name="SwingBattleship" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -90,21 +97,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GameBoardTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SwingBattleship" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Model" />
-      <option name="MAIN_CLASS_NAME" value="Model.GameBoardTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="PlayerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SwingBattleship" />
       <extension name="coverage">
@@ -122,11 +114,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.WelcomeScreen" />
-        <item itemvalue="JUnit.GameBoardTest" />
         <item itemvalue="JUnit.PlayerTest" />
+        <item itemvalue="Application.WelcomeScreen" />
         <item itemvalue="Application.HighScoreScreen" />
         <item itemvalue="Application.App" />
+        <item itemvalue="Application.Grid" />
       </list>
     </recent_temporary>
   </component>
@@ -155,32 +147,32 @@
       <screen x="79" y="27" width="1841" height="1053" />
     </state>
     <state x="207" y="27" width="1565" height="1053" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1597930957340" />
-    <state width="1795" height="278" key="GridCell.Tab.0.bottom" timestamp="1598020234699">
+    <state width="1795" height="278" key="GridCell.Tab.0.bottom" timestamp="1598017773338">
       <screen x="79" y="27" width="1841" height="1053" />
     </state>
     <state width="1034" height="278" key="GridCell.Tab.0.bottom/79.27.1841.1053/1920.0.1080.1920@1920.0.1080.1920" timestamp="1597911175008" />
-    <state width="1795" height="278" key="GridCell.Tab.0.bottom/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1598020234699" />
+    <state width="1795" height="278" key="GridCell.Tab.0.bottom/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1598017773338" />
     <state width="1034" height="278" key="GridCell.Tab.0.bottom/79.27.1841.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1597840858805" />
     <state width="1795" height="344" key="GridCell.Tab.0.bottom/79.27.1841.1053/1920.0.1920.1080@79.27.1841.1053" timestamp="1597850500812" />
-    <state width="1795" height="278" key="GridCell.Tab.0.center" timestamp="1598020234699">
+    <state width="1795" height="278" key="GridCell.Tab.0.center" timestamp="1598017773338">
       <screen x="79" y="27" width="1841" height="1053" />
     </state>
     <state width="1034" height="278" key="GridCell.Tab.0.center/79.27.1841.1053/1920.0.1080.1920@1920.0.1080.1920" timestamp="1597911175008" />
-    <state width="1795" height="278" key="GridCell.Tab.0.center/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1598020234699" />
+    <state width="1795" height="278" key="GridCell.Tab.0.center/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1598017773338" />
     <state width="1034" height="278" key="GridCell.Tab.0.center/79.27.1841.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1597840858805" />
     <state width="1795" height="344" key="GridCell.Tab.0.center/79.27.1841.1053/1920.0.1920.1080@79.27.1841.1053" timestamp="1597850500812" />
-    <state width="1795" height="278" key="GridCell.Tab.0.left" timestamp="1598020234699">
+    <state width="1795" height="278" key="GridCell.Tab.0.left" timestamp="1598017773338">
       <screen x="79" y="27" width="1841" height="1053" />
     </state>
     <state width="1034" height="278" key="GridCell.Tab.0.left/79.27.1841.1053/1920.0.1080.1920@1920.0.1080.1920" timestamp="1597911175008" />
-    <state width="1795" height="278" key="GridCell.Tab.0.left/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1598020234699" />
+    <state width="1795" height="278" key="GridCell.Tab.0.left/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1598017773338" />
     <state width="1034" height="278" key="GridCell.Tab.0.left/79.27.1841.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1597840858805" />
     <state width="1795" height="344" key="GridCell.Tab.0.left/79.27.1841.1053/1920.0.1920.1080@79.27.1841.1053" timestamp="1597850500812" />
-    <state width="1795" height="278" key="GridCell.Tab.0.right" timestamp="1598020234699">
+    <state width="1795" height="278" key="GridCell.Tab.0.right" timestamp="1598017773338">
       <screen x="79" y="27" width="1841" height="1053" />
     </state>
     <state width="1034" height="278" key="GridCell.Tab.0.right/79.27.1841.1053/1920.0.1080.1920@1920.0.1080.1920" timestamp="1597911175008" />
-    <state width="1795" height="278" key="GridCell.Tab.0.right/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1598020234699" />
+    <state width="1795" height="278" key="GridCell.Tab.0.right/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1598017773338" />
     <state width="1034" height="278" key="GridCell.Tab.0.right/79.27.1841.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1597840858805" />
     <state width="1795" height="344" key="GridCell.Tab.0.right/79.27.1841.1053/1920.0.1920.1080@79.27.1841.1053" timestamp="1597850500812" />
     <state width="1795" height="344" key="GridCell.Tab.1.bottom" timestamp="1597850500812">
@@ -230,9 +222,6 @@
     <state x="662" y="257" width="672" height="678" key="search.everywhere.popup/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1598015360613" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SwingBattleship$GameBoardTest.ic" NAME="GameBoardTest Coverage Results" MODIFIED="1598018484333" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>Model.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/SwingBattleship$PlayerTest.ic" NAME="PlayerTest Coverage Results" MODIFIED="1598017773226" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>Model.*</FILTER>
     </SUITE>
