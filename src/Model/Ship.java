@@ -11,12 +11,12 @@ public class Ship {
     private int startY;
     private boolean isHor;
 
-    public Ship(SHIP ship){
-        if (ship==null) return;
-        this.ship=ship;
-        this.size=ship.getSize();
-        this.health=ship.getSize();
-        this.type=ship.toString();
+    public Ship(SHIP ship) {
+        if (ship == null) return;
+        this.ship = ship;
+        this.size = ship.getSize();
+        this.health = ship.getSize();
+        this.type = ship.toString();
     }
 
     public String getType() {
@@ -38,8 +38,9 @@ public class Ship {
     public boolean isDeployed() {
         return isDeployed;
     }
-    void setUnDeployed(){
-        isDeployed=false;
+
+    void setUnDeployed() {
+        isDeployed = false;
     }
 
     public int getStartX() {
@@ -56,11 +57,12 @@ public class Ship {
 
     /**
      * Will deploy if coordinate is valid (x and y on game board). If fail, boolean "isDeployed" remains false.
+     *
      * @param coordinate Start coordinate
-     * @param isHor Ship orientation, horizontal if true, else vertical.
+     * @param isHor      Ship orientation, horizontal if true, else vertical.
      */
     void deploy(Coordinate coordinate, boolean isHor) {
-        if (coordinate.getX()==null)return;
+        if (coordinate.getX() == null) return;
         this.startX = coordinate.getX();
         this.startY = coordinate.getY();
         this.isHor = isHor;

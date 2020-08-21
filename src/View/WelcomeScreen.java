@@ -15,6 +15,9 @@ public class WelcomeScreen extends JDialog {
     private javax.swing.JLabel JLabel;
     private JButton highScoresButton;
 
+    /**
+     * Contains main method and is the welcome screen.
+     */
     public WelcomeScreen() {
         setContentPane(contentPane);
         setModal(true);

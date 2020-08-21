@@ -7,6 +7,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+/**
+ * This is the graphical representation that also handles some of the controls for each of the two players
+ * playing Battleship.
+ */
 public class GameGrid {
     private HelperClass helperClass = new HelperClass();
     private Coordinate currCor;
@@ -21,8 +25,13 @@ public class GameGrid {
     public GameController gameController;
     public Player thisPlayer;
 
+    /**
+     * @param grid           The panel the gaming grid should be created.
+     * @param isP1           If it is player 1.
+     * @param gameController Containing controller and both of the players.
+     *                       it is used for coordinating the two gamegrids and  controlling the game.
+     */
     public GameGrid(JPanel grid, boolean isP1, GameController gameController) {
-
         this.isP1 = isP1;
         this.gameController = gameController;
         setPlayer();
@@ -31,9 +40,12 @@ public class GameGrid {
         grid.setLayout(new GridLayout(coordinateHelper.height, coordinateHelper.width));
         for (int y = 0; y < coordinateHelper.height; y++) {
             for (int x = 0; x < coordinateHelper.width; x++) {
+                //Initiate the board:
                 squareButtons[x][y] = new SquareButton(x, y);
                 SquareButton tempButton = squareButtons[x][y];
+                //Set the background to default light_gray (keep it minimilistic)
                 tempButton.setBackground(Color.LIGHT_GRAY);
+                //The controller/mouselistener for each of the buttons in the grid:
                 tempButton.addMouseListener(new MouseListener() {
                     @Override
                     public void mouseClicked(MouseEvent mouseEvent) {
@@ -115,10 +127,24 @@ public class GameGrid {
         }
     }
 
+    /**
+     * Shots a shot. DOES NOT INFORM THE CONTROLLER!!!!
+     *
+     * @param coordinate
+     */
     private void shot(Coordinate coordinate) {
         thisPlayer.isShotHit(coordinate);
     }
 
+    /**
+     * Verifies the coordinate being on board or not.
+     * Used for verifying that the end coordinate not returning null.
+     *
+     * @param coordinate
+     * @return true if coordinate not null, or the coordinate not initiated.
+     * If true it has nothing to do with the model, it simply is not initiated, possibly because
+     * call to "getEnd()" returned null?.
+     */
     boolean isOnBoard(Coordinate coordinate) {
         if (coordinate == null || coordinate.getX() == null) return false;
         else return true;
@@ -146,11 +172,20 @@ public class GameGrid {
         return end;
     }
 
+    /**
+     * @return True if can it is players turn to place ships OR opponents turn to shot at the grid, else false.
+     * This is further controlled in the GameController.
+     */
     public boolean isPlayersTurn() {
         if (isP1) return gameController.isP1Turn();
         else return !gameController.isP1Turn();
     }
 
+    /**
+     * Deploys ship and increase the shipIndex, or switches turn if all ships are deployed.
+     *
+     * @param startCoord
+     */
     public void deploy(Coordinate startCoord) {
         Ship ship = thisPlayer.ships.get(shipIndex);
         if (ship.isDeployed()) {
@@ -175,7 +210,7 @@ public class GameGrid {
     }
 
     /**
-     * Draw before game.
+     * Draw before game is started.
      *
      * @param start
      * @param end
@@ -204,7 +239,7 @@ public class GameGrid {
     }
 
     /**
-     * Draw during game.
+     * Use this <code>redraw()</code> during game.
      * Prints hits in red. and misses in black. All else light_gray
      */
     public void redraw() {
@@ -223,26 +258,31 @@ public class GameGrid {
         }
     }
 
-    public void clearAllUndeployed() {
-        System.out.println("Not implemented");
-    }
-
+    /**
+     * Returns the size of the ship with current <code>shipIndex</code>
+     *
+     * @return
+     */
     public int getShipSize() {
         SHIP[] ships = SHIP.values();
         return ships[shipIndex].getSize();
     }
 
+    /**
+     * Sets thisPlayer to the correct player from the provided <code>GameController</code> and based
+     * on the boolean <code>isP1</code>.
+     */
     private void setPlayer() {
-        System.out.println(gameController.player1.getName());
-        System.out.println(gameController.player2.getName());
-
         Player player = null;
         if (isP1) player = gameController.player1;
         else player = gameController.player2;
         thisPlayer = player;
-        System.out.println("Meaning this player is: " + thisPlayer.getName());
     }
 
+    /**
+     * Inverts isHor if is current players turn.
+     * Is called from GameBoardView since it proved best for binding keys.
+     */
     public void invertHor() {
         if (!isPlayersTurn() || gameController.isGameStarted()) return;
         isHor = !isHor;
@@ -254,6 +294,12 @@ public class GameGrid {
         drawShip(start);
     }
 
+    /**
+     * Draws ship when mouseHover over a button,
+     * also controls if valid, and in these cases sets background red instead of GRAY
+     *
+     * @param start
+     */
     public void drawShip(Coordinate start) {
         Coordinate end = getEnd(SHIP.values()[shipIndex].getSize(), start, isHor);
         if (isOnBoard(end)) {

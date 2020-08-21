@@ -8,11 +8,16 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 
 /**
- * The level off hacking applied in this windowClass is absurd,
- * I can refactor and add comments if somebody actually think
- * that I will ever use Java instead of html for GUI in future..
+ * This is a Graphical board for playing a round of Snake.
+ * Is dependent on the controller and model.
+ * The controller is dependent on classes in "view".
  */
 public class GameBoardView {
+    /**
+     * The level of hacking applied in this windowClass is absurd,
+     * I can refactor and add comments if somebody actually think
+     * that I will ever use Java instead of html for GUI in future..
+     */
     GameGrid topGrid;
     GameGrid bottomGrid;
 

@@ -11,7 +11,7 @@ public class Player {
     private int numShots = 0;
 
     /**
-     * Initiates an list of ships with the index specified by the enums in <code>SHIP</code>.
+     * Initiates an list of ships with the order and sizes specified by the enums in <code>SHIP</code>.
      *
      * @param name If null or empty the name of the player will remain empty. Which would not allow save off highscore.
      *             , else it will be used in high-score.
@@ -36,13 +36,13 @@ public class Player {
     }
 
     /**
-     * If name is null, empty, or longer than 20 characters it will be ignored.
+     * If name is null, empty, it will be ignored.
      *
      * @param name
      */
     public void setName(String name) {
-        if (name != null && name.length() > 0 && name.length() < 20) this.name = name;
-        this.name = name;
+        if (name != null && name.length() > 0) this.name = name;
+        else this.name = null;
     }
 
 
@@ -80,24 +80,20 @@ public class Player {
         return isGameOver;
     }
 
+    /**
+     * Sets game over in gameboard and locally in player.
+     */
     public void setGameOver() {
         gameBoard.setGameOver();
         isGameOver = true;
     }
 
     /**
-     * @param ship       Enum specifying the ship type to move.
-     * @param coordinate Coordinate of first square.
-     * @param isHorr     Ship is placed horizontally if true, vertically if false.
-     * @throws IllegalStateException If game has already started
+     * Returns ArrayList with the health of the ships in the order they where initiated in the constructor.
+     * I.e. in the same order they are listed in the enum <code>SHIP</code>
+     *
+     * @return
      */
-    void setShipCoordinate(SHIP ship, Coordinate coordinate, boolean isHorr) throws IllegalStateException {
-        if (isGameStarted()) {
-            throw new IllegalStateException("The ship can't change location when the game has started");
-        }
-        throw new UnsupportedOperationException();
-    }
-
     public ArrayList<Integer> getFleetStatus() {
         ArrayList<Integer> healths = new ArrayList<>();
         for (Ship s : ships) {
@@ -122,7 +118,6 @@ public class Player {
             }
             return true;
         }
-
         if (!isGameStarted) throw new IllegalStateException("Can not shoot before game starts!");
         boolean isHit = gameBoard.shoot(coordinate);//Throws exception if boat is previously hit. TODO TEST!
         numShots++;

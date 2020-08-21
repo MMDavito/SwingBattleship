@@ -6,6 +6,11 @@ import java.nio.file.Paths;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * This class does not provide any method for timestamp for knowing what time highscore was acheived.
+ * It should always be included, along with an identifier.
+ * But the requirement did not specify any timestamp.
+ */
 public class HighScore {
     private final String highscoreFileName = "data/high_score.csv";
 

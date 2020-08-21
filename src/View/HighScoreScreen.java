@@ -55,13 +55,12 @@ public class HighScoreScreen extends JDialog {
         HighScore highScoreHelper = new HighScore();
         LinkedList<HighScore> highscores = highScoreHelper.getHighscores();
         /*
-        Could sort more advanced, like when two with same amount of rounds, it could sort based on
+        Could SORT more advanced, like when two with same amount of rounds, it could sort based on
         remaining health. But could also have an sort when pressing the list.
         But since not javascript it would just be awful and it would save time to translate the entire project to
         javascript.
         */
         highscores.sort((h1, h2) -> (h1.getGameRound() - h2.getGameRound()));
-        //hStrings.add()
         LinkedList<String> columns = highScoreHelper.getCsvColumns();
         for (String column : columns) {
             defaultTableModel.addColumn(column);
@@ -79,6 +78,5 @@ public class HighScoreScreen extends JDialog {
         dialog.pack();
         dialog.setVisible(true);
 
-        //System.exit(0);
     }
 }
