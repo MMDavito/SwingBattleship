@@ -67,7 +67,7 @@
               </grid>
             </constraints>
             <properties>
-              <text value="CheatingP1"/>
+              <text value="David"/>
             </properties>
           </component>
           <hspacer id="5662c">
@@ -87,7 +87,7 @@
               </grid>
             </constraints>
             <properties>
-              <text value="SheatedP2"/>
+              <text value="David"/>
             </properties>
           </component>
           <component id="7c4db" class="javax.swing.JLabel">

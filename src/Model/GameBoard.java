@@ -30,7 +30,7 @@ public class GameBoard {
         isGameOver = true;
     }
 
-    public BoardSquare boardSquares[][] = new BoardSquare[width][height];//#TODO Could refactor to use coordinates and hashes.
+    public BoardSquare boardSquares[][] = new BoardSquare[width][height];
 
     /**
      * Verifies if the coordinates exists on the board.
@@ -56,9 +56,9 @@ public class GameBoard {
         int endX = coordinate.getX();
         int endY = coordinate.getY();
         if (isHor) {
-            endX += ship.getSize()-1;
+            endX += ship.getSize() - 1;
         } else {//Is vertical
-            endY += ship.getSize()-1;
+            endY += ship.getSize() - 1;
         }
         Coordinate end = new Coordinate(endX, endY);
         if (!isOnBoard(end)) return null;
@@ -83,7 +83,7 @@ public class GameBoard {
         int endX = end.getX();
         int endY = end.getY();
 
-        if (endX >= width || endY >= height) //throw new IllegalArgumentException("Trying to place an ship outside of game board");
+        if (endX >= width || endY >= height)
             return false;
 
         int x = startX;
@@ -181,7 +181,7 @@ public class GameBoard {
      * @return True if previously coordinate is previously shot.
      * @throws IllegalArgumentException If coordinate not valid.
      */
-    boolean isPreviouslyHit(Coordinate coordinate) throws IllegalArgumentException {
+    public boolean isPreviouslyHit(Coordinate coordinate) throws IllegalArgumentException {
         if (!isOnBoard(coordinate)) throw new IllegalArgumentException("Coordinates outside of board.");
         int x = coordinate.getX();
         int y = coordinate.getY();

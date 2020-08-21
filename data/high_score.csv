@@ -1,4 +1,8 @@
+Winner,Looser,Round,Remaining_Health,wasAgainstAI,wasWinnerAI
+David,David,1,17,false,false
 SheatedP2,CheatingP1,1,17,false,false
 SheatedP2,CheatingP1,1,17,false,false
 SheatedP2,CheatingP1,1,17,false,false
 SheatedP2,CheatingP1,1,17,false,false
+SheatedP2,CheatingP1,18,1,false,false
+David,David,20,1,false,false

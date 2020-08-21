@@ -3,18 +3,19 @@ package Controller;
 import Model.HighScore;
 import Model.Player;
 import Model.SHIP;
-import Model.Ship;
 import View.HighScoreScreen;
 
 import javax.swing.*;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
-/**
- * Grew sick of access controll the moment I realised i was devolopeing desktop, and not API.
- */
-public class Controller {
+
+public class GameController {
+    /**
+     * Grew sick of access control the moment I abandoned MVC pattern.
+     * I Abandoned MVC when realised I was devolopeing desktop, and not API.
+     * Which caused soome hacking and is
+     */
     public Player player1;
     public Player player2;
     private boolean isP1Turn = true;//p1 always starts
@@ -25,9 +26,7 @@ public class Controller {
     int gameRound = 0;//Indexes each player2 round, player2 shots first.
     public boolean p2IsAi = false;
 
-    public Controller(DefaultListModel<String> p1ScoreBoard, DefaultListModel<String> p2ScoreBoard, Player player1, Player player2) {
-        //player1 = new Player("Player_1");
-        //player2 = new Player("Player_2");
+    public GameController(DefaultListModel<String> p1ScoreBoard, DefaultListModel<String> p2ScoreBoard, Player player1, Player player2) {
         this.player1 = player1;
         this.player2 = player2;
         this.p1ScoreBoard = p1ScoreBoard;
@@ -42,37 +41,34 @@ public class Controller {
             p2StringScores.add(SHIP.values()[i].toString() + ": ");
             p2StringScores.add(p2Scores.get(i).toString());
         }
-        /*
-        for (int i = 0; i < 5; i++) {
-            String temp = "Bajs" + i;
-            arrayList.add(temp);
-        }
-        */
         this.p1ScoreBoard.addAll(p1StringScores);
         this.p2ScoreBoard.addAll(p2StringScores);
-        //ListModel<String> p1LModel = this.p1ScoreBoard.getModel();
-
-        //ListModel<String> p2LModel = this.p2ScoreBoard.getModel();
     }
 
     public boolean isP1Turn() {
         return isP1Turn;
     }
 
+    /**
+     * Sets game over to the both players and saves highscore to file.
+     */
     private void setGameOver() {
         isGameOver = true;
         player1.setGameOver();
         player2.setGameOver();
 
         updateList();//TODO open highscore screen.
+        saveHighScore();
+    }
+
+    /**
+     * Saves highscore of player1 and player2 to file.
+     */
+    private void saveHighScore() {
         HighScore highScore = new HighScore(player1, player2, gameRound, p2IsAi);
         highScore.writeToFile();
         HighScoreScreen highScoreScreen = new HighScoreScreen();
         highScoreScreen.open();
-    }
-
-    private void saveHighScore() {
-
     }
 
     /**
@@ -123,6 +119,9 @@ public class Controller {
         return true;
     }
 
+    /**
+     * Updates the two scoreboards given to the constructor..
+     */
     public void updateList() {
         ArrayList<Integer> p1Scores = player1.getFleetStatus();
         ArrayList<Integer> p2Scores = player2.getFleetStatus();

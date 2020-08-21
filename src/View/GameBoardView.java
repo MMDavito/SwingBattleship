@@ -1,14 +1,18 @@
 package View;
 
-import Controller.Controller;
+import Controller.GameController;
 import Model.Player;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
+/**
+ * The level off hacking applied in this windowClass is absurd,
+ * I can refactor and add comments if somebody actually think
+ * that I will ever use Java instead of html for GUI in future..
+ */
 public class GameBoardView {
-    boolean isPlayer1Turn = true;
     GameGrid topGrid;
     GameGrid bottomGrid;
 
@@ -17,7 +21,7 @@ public class GameBoardView {
     JPanel window = new JPanel();
     JFrame windowF = new JFrame();
 
-    public void startGame(Player player1,Player player2) {
+    public void startGame(Player player1, Player player2) {
         DefaultListModel<String> p1Score = new DefaultListModel<>();
         DefaultListModel<String> p2Score = new DefaultListModel<>();
         JList<String> topScore = new JList<>();//p2Score
@@ -25,19 +29,16 @@ public class GameBoardView {
         bottomScore.setModel(p1Score);
         topScore.setModel(p2Score);
 
-        Controller gameController = new Controller(p1Score, p2Score,player1,player2);
+        //Initiate gameController and the gameing grids
+        GameController gameController = new GameController(p1Score, p2Score, player1, player2);
         topGrid = new GameGrid(new JPanel(), false, gameController);//player2 grid
         bottomGrid = new GameGrid(new JPanel(), true, gameController);//player 1 grid
 
         window.setBackground(Color.BLACK);
         topPanel.setBackground(Color.BLACK);
         bottomPanel.setBackground(Color.red);
-        //JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,topPanel,bottomPanel);
-        //        window.add(splitPane);
-        //      splitPane.setDividerLocation(0.5);
-        //        splitPane.setResizeWeight(1.0);
 
-        //Firstly separate the two panes top and bottom into grid and score.:
+        //Firstly separate the two panes top and bottom into Top and bottom gameGrid and score.:
         topPanel.setLayout(new GridBagLayout());
         bottomPanel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -45,8 +46,10 @@ public class GameBoardView {
         c.weighty = 1;
         c.weightx = 0.8;
         c.gridx = 0;
+        //Adding the two gameing grids:
         topPanel.add(topGrid.grid, c);
         bottomPanel.add(bottomGrid.grid, c);
+        //Adding the two score boards:
         c.gridx = 1;
         topPanel.add(topScore, c);
         bottomPanel.add(bottomScore, c);
@@ -90,6 +93,5 @@ public class GameBoardView {
         windowF.setLocationRelativeTo(null);
         windowF.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         windowF.setVisible(true);
-
     }
 }

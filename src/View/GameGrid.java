@@ -1,6 +1,6 @@
 package View;
 
-import Controller.Controller;
+import Controller.GameController;
 import Model.*;
 
 import javax.swing.*;
@@ -9,8 +9,6 @@ import java.awt.event.*;
 
 public class GameGrid {
     private HelperClass helperClass = new HelperClass();
-    //private boolean isGameStarted = false;//can place || click if false, and it is player turn.
-    //public boolean isGameOver = false; //will probably not be used TODO: Remove
     private Coordinate currCor;
     public boolean isP1;//Is player 1.
     int shipIndex = 0;//Carrier
@@ -20,10 +18,10 @@ public class GameGrid {
     //Hashtable with linked nodes would be better than following, but requires time for design
     public SquareButton[][] squareButtons = new SquareButton[coordinateHelper.width][coordinateHelper.height];
     //public GameBoard
-    public Controller gameController;
+    public GameController gameController;
     public Player thisPlayer;
 
-    public GameGrid(JPanel grid, boolean isP1, Controller gameController) {
+    public GameGrid(JPanel grid, boolean isP1, GameController gameController) {
 
         this.isP1 = isP1;
         this.gameController = gameController;
@@ -39,16 +37,21 @@ public class GameGrid {
                 tempButton.addMouseListener(new MouseListener() {
                     @Override
                     public void mouseClicked(MouseEvent mouseEvent) {
-                        if (gameController.isGameOver()){return;}
+                        if (gameController.isGameOver()) {
+                            return;
+                        }
                         System.out.println("Pressed x:" + tempButton.x + ", y:" + tempButton.y);
                         Coordinate start = new Coordinate(tempButton.x, tempButton.y);
                         if ((isPlayersTurn() && !gameController.isGameStarted()) ||
                                 (!isPlayersTurn() && gameController.isGameStarted())) {
                             if (!gameController.isGameStarted()) deploy(start);
-                            else {
+                            else if (!thisPlayer.gameBoard.isPreviouslyHit(start)) {
                                 shot(start);
                                 redraw();
                                 gameController.switchTurn();
+                            } else {
+                                System.out.println("Cant shoot square already shot");
+                                return;//cant shoot previosly shot grid
                             }
                         }
                     }
@@ -103,24 +106,10 @@ public class GameGrid {
                             //Clear the red used to signal being outside board.
                             end = new Coordinate(endX, endY);
                             draw(coordinate, end, Color.LIGHT_GRAY);
-                            /*
-                            int x = coordinate.getX();
-
-                            while (true) {//Iterate x-plane
-                                int y = coordinate.getY();
-                                while (y <= endY) {//Iterate y-plane
-                                    squareButtons[x][y].setBackground(Color.LIGHT_GRAY);
-                                    if (y == endY) break;
-                                    y++;
-                                }
-                                if (x == endX) break;
-                                x++;
-                            }*/
                         }
                     }
                 });
                 //Add the button to the grid.
-                // squareButtons[x][y].setFocusable(false);
                 grid.add(squareButtons[x][y]);
             }
         }
@@ -255,13 +244,13 @@ public class GameGrid {
     }
 
     public void invertHor() {
-        if (!isPlayersTurn()||gameController.isGameStarted()) return;
+        if (!isPlayersTurn() || gameController.isGameStarted()) return;
         isHor = !isHor;
         Coordinate start = new Coordinate(0, 0);
-        Coordinate end = new Coordinate(coordinateHelper.width-1, coordinateHelper.width-1);
+        Coordinate end = new Coordinate(coordinateHelper.width - 1, coordinateHelper.width - 1);
         draw(start, end, Color.LIGHT_GRAY);
         start = currCor;
-        if (start==null) return;
+        if (start == null) return;
         drawShip(start);
     }
 

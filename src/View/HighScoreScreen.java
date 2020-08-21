@@ -1,14 +1,12 @@
 package View;
 
-import Controller.Controller;
+import Controller.GameController;
 import Model.HighScore;
-import Model.Player;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class HighScoreScreen extends JDialog {
@@ -16,11 +14,11 @@ public class HighScoreScreen extends JDialog {
     private JButton buttonExit;
     private JTable table1;
     DefaultTableModel defaultTableModel;
-    private Controller gameController;
+    private GameController gameController;
     private boolean isP2AI;
 
     public HighScoreScreen() {
-        contentPane.setPreferredSize(new Dimension(600,200));
+        contentPane.setPreferredSize(new Dimension(600, 200));
         setContentPane(contentPane);
         setModal(true);
         defaultTableModel = new DefaultTableModel();
@@ -66,32 +64,21 @@ public class HighScoreScreen extends JDialog {
         //hStrings.add()
         LinkedList<String> columns = highScoreHelper.getCsvColumns();
         for (String column : columns) {
-            System.out.println("Col: "+column);
             defaultTableModel.addColumn(column);
         }
         for (HighScore highScore : highscores) {
             defaultTableModel.addRow(highScore.toArray());
         }
         defaultTableModel.fireTableDataChanged();
-        System.out.println("IM THA GRATEST");
         return;
     }
-public void open(){
-    HighScoreScreen dialog = new HighScoreScreen();
-    dialog.populateList();
-    dialog.pack();
-    dialog.setVisible(true);
-    System.out.println("Is visible");
-    //System.exit(0);
-}
-    public static void main(String[]args) {
+
+    public void open() {
         HighScoreScreen dialog = new HighScoreScreen();
         dialog.populateList();
         dialog.pack();
         dialog.setVisible(true);
 
-        System.out.println("Is visible");
         //System.exit(0);
     }
-
 }

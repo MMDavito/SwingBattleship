@@ -23,7 +23,12 @@ public class WelcomeScreen extends JDialog {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 HighScoreScreen highScoreScreen = new HighScoreScreen();
-                highScoreScreen.open();
+                try {
+                    highScoreScreen.open();
+                } catch (NullPointerException e) {
+                    System.out.println("Highscoresfile probably not existing");
+                    highScoresButton.setBackground(Color.red);
+                }
             }
 
             @Override
@@ -78,7 +83,9 @@ public class WelcomeScreen extends JDialog {
     private void onOK() {
         // Check if names are null, else create two new players.
         String p1Name = p1NameField.getText();
-        if (p1Name == null || p1Name.length() == 0){ p1Name = "Player_1";}else if(p1Name.contains(",")){
+        if (p1Name == null || p1Name.length() == 0) {
+            p1Name = "Player_1";
+        } else if (p1Name.contains(",")) {
             p1NameField.setBackground(Color.red);
             return;
         }
@@ -94,9 +101,7 @@ public class WelcomeScreen extends JDialog {
 
         contentPane.setVisible(false);
         new GameBoardView().startGame(player1, player2);
-
-        dispose();//TODO TEST
-
+        dispose();
     }
 
     private void onCancel() {

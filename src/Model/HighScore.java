@@ -107,7 +107,6 @@ public class HighScore {
                 isFirst = false;
                 continue;
             }
-            System.out.println("Line is: "+line);
             highScores.add(new HighScore(line));
         }
         return highScores;
