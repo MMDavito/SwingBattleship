@@ -1,7 +1,9 @@
 To start: Read "start.txt".
 
 The game GUI is pretty straight forward.
-However, some notes:
+But some explanation can be needed:
+
+0. Color coding: Red for hit, blue for miss.
 1. To rotate the ship: press key "z" on keyboard.
 2. If you play against AI you will need to hover over the AI game board to redraw it.
 3. If you want to know the current round number you need to look in the console.
