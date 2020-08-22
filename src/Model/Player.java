@@ -69,7 +69,7 @@ public class Player {
         for (Ship s : ships) {
             if (!s.isDeployed) {
                 throw new IllegalStateException("Can't start game unless all ships are deployed." +
-                        "\nShip: " + s.getClass().getName() + ", is not deployed.");//TODO: Test so it's printout works!
+                        "\nShip: " + s.getClass().getName() + ", is not deployed.");
             }
         }
         gameBoard.startGame();

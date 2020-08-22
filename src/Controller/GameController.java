@@ -151,8 +151,8 @@ public class GameController {
         }
         //Else is p2 turn
         else if (!isGameStarted) {
-            if (p2IsAi) {//TODO REMOVE:
-                throw new IllegalStateException("Should not happen, Ai turn");
+            if (p2IsAi) {
+                throw new IllegalStateException("Should never occur, be reached or happen. It is Ais turn");
             }
             // Is not ai
             if (!player2.canGameStart()) return;

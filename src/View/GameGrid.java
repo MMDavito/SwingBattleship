@@ -205,7 +205,7 @@ public class GameGrid {
         Ship ship = thisPlayer.ships.get(shipIndex);
         if (ship.isDeployed()) {
             if (helperClass.ISDEBUG) System.out.println("Not implemented undeploy in view");
-            return;//Not supported TODO find time to implement?
+            return;//Not supported TODO find time to implement undeploy in view?
         }
         if (!thisPlayer.gameBoard.isDeployable(ship, startCoord, isHor)) {
             if (helperClass.ISDEBUG)

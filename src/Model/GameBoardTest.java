@@ -74,12 +74,6 @@ class GameBoardTest {
                 (coordinatePlacedSuccess.getX() - 1, coordinatePlacedSuccess.getY()), shouldTryHor));
 
         assertFalse(gameBoard.deploy(ship2, coordinatePlacedSuccess, shouldTryHor));//Only one square intersect, it should still throw exception
-        /*
-        //TODO remove:
-        exception = assertThrows(IllegalArgumentException.class, () -> {
-            gameBoard.deploy(ship2, coordinatePlacedSuccess, shouldTryHor);//Only one square intersect, it should still throw exception
-        });
-        assertEquals(exception.getClass(), IllegalArgumentException.class);*/
 
         assertTrue(gameBoard.deploy(ship2, new Coordinate
                 (coordinatePlacedSuccess.getX() - 1, coordinatePlacedSuccess.getY()), shouldTryHor));
