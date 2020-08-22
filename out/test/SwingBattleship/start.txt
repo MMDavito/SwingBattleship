@@ -6,7 +6,8 @@ https://jdk.java.net/java-se-ri/11
 ------------------------------
 Linux/windows start Instruction:
 1. Start terminal/console.
-2. Navigate to the directory of jar "SwingBattleship.jar".
+2. Navigate to the directory of jar "SwingBattleship.jar" inside of
+the directory: "/out/artifacts/SwingBattleship_jar"
 3. Execute "java -jar SwingBattleship.jar"
 ------------------------------
 This should also work for all Operating systems that can trigger mouseEvents in java.

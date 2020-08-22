@@ -43,7 +43,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
@@ -228,11 +228,11 @@
     </state>
     <state width="1795" height="344" key="GridCell.Tab.1.right/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1598100157759" />
     <state width="1795" height="344" key="GridCell.Tab.1.right/79.27.1841.1053/1920.0.1920.1080@79.27.1841.1053" timestamp="1597850500812" />
-    <state x="335" y="112" width="1024" height="845" key="SettingsEditor" timestamp="1598101069015">
+    <state x="335" y="112" width="1024" height="845" key="SettingsEditor" timestamp="1598102351616">
       <screen x="79" y="27" width="1841" height="1053" />
     </state>
     <state x="335" y="112" width="1024" height="845" key="SettingsEditor/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1598098416356" />
-    <state x="335" y="112" key="SettingsEditor/79.27.1841.1053/1920.0.1920.1080@79.27.1841.1053" timestamp="1598101069015" />
+    <state x="335" y="112" width="1024" height="845" key="SettingsEditor/79.27.1841.1053/1920.0.1920.1080@79.27.1841.1053" timestamp="1598102351616" />
     <state x="854" y="349" key="UIDesigner.ListEditorDialog" timestamp="1597929439180">
       <screen x="79" y="27" width="1841" height="1053" />
     </state>
