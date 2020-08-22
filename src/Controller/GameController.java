@@ -143,6 +143,9 @@ public class GameController {
                     gameRound++;
                     System.out.println("Round: " + gameRound);
                     updateList();
+                    if (isPlayerLoser(player1)) {
+                        setGameOver();
+                    }
                     return;
                 }
                 updateList();

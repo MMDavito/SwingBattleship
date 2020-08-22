@@ -67,7 +67,7 @@
               </grid>
             </constraints>
             <properties>
-              <text value="David"/>
+              <text value="Player_1"/>
             </properties>
           </component>
           <hspacer id="5662c">
@@ -87,7 +87,7 @@
               </grid>
             </constraints>
             <properties>
-              <text value="DavidAI"/>
+              <text value="Player_2"/>
             </properties>
           </component>
           <component id="7c4db" class="javax.swing.JLabel">
