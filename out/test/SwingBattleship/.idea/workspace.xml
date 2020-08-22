@@ -11,8 +11,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -46,11 +46,11 @@
     <key name="CreateTestDialog.RecentsKey">
       <recent name="Model" />
     </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="Model" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/Model" />
@@ -155,32 +155,32 @@
       <screen x="79" y="27" width="1841" height="1053" />
     </state>
     <state x="207" y="27" width="1565" height="1053" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1597930957340" />
-    <state width="1795" height="278" key="GridCell.Tab.0.bottom" timestamp="1598020346099">
+    <state width="1795" height="278" key="GridCell.Tab.0.bottom" timestamp="1598025863227">
       <screen x="79" y="27" width="1841" height="1053" />
     </state>
     <state width="1034" height="278" key="GridCell.Tab.0.bottom/79.27.1841.1053/1920.0.1080.1920@1920.0.1080.1920" timestamp="1597911175008" />
-    <state width="1795" height="278" key="GridCell.Tab.0.bottom/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1598020346099" />
+    <state width="1795" height="278" key="GridCell.Tab.0.bottom/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1598025863227" />
     <state width="1034" height="278" key="GridCell.Tab.0.bottom/79.27.1841.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1597840858805" />
     <state width="1795" height="344" key="GridCell.Tab.0.bottom/79.27.1841.1053/1920.0.1920.1080@79.27.1841.1053" timestamp="1597850500812" />
-    <state width="1795" height="278" key="GridCell.Tab.0.center" timestamp="1598020346099">
+    <state width="1795" height="278" key="GridCell.Tab.0.center" timestamp="1598025863226">
       <screen x="79" y="27" width="1841" height="1053" />
     </state>
     <state width="1034" height="278" key="GridCell.Tab.0.center/79.27.1841.1053/1920.0.1080.1920@1920.0.1080.1920" timestamp="1597911175008" />
-    <state width="1795" height="278" key="GridCell.Tab.0.center/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1598020346099" />
+    <state width="1795" height="278" key="GridCell.Tab.0.center/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1598025863226" />
     <state width="1034" height="278" key="GridCell.Tab.0.center/79.27.1841.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1597840858805" />
     <state width="1795" height="344" key="GridCell.Tab.0.center/79.27.1841.1053/1920.0.1920.1080@79.27.1841.1053" timestamp="1597850500812" />
-    <state width="1795" height="278" key="GridCell.Tab.0.left" timestamp="1598020346099">
+    <state width="1795" height="278" key="GridCell.Tab.0.left" timestamp="1598025863226">
       <screen x="79" y="27" width="1841" height="1053" />
     </state>
     <state width="1034" height="278" key="GridCell.Tab.0.left/79.27.1841.1053/1920.0.1080.1920@1920.0.1080.1920" timestamp="1597911175008" />
-    <state width="1795" height="278" key="GridCell.Tab.0.left/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1598020346099" />
+    <state width="1795" height="278" key="GridCell.Tab.0.left/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1598025863226" />
     <state width="1034" height="278" key="GridCell.Tab.0.left/79.27.1841.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1597840858805" />
     <state width="1795" height="344" key="GridCell.Tab.0.left/79.27.1841.1053/1920.0.1920.1080@79.27.1841.1053" timestamp="1597850500812" />
-    <state width="1795" height="278" key="GridCell.Tab.0.right" timestamp="1598020346099">
+    <state width="1795" height="278" key="GridCell.Tab.0.right" timestamp="1598025863227">
       <screen x="79" y="27" width="1841" height="1053" />
     </state>
     <state width="1034" height="278" key="GridCell.Tab.0.right/79.27.1841.1053/1920.0.1080.1920@1920.0.1080.1920" timestamp="1597911175008" />
-    <state width="1795" height="278" key="GridCell.Tab.0.right/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1598020346099" />
+    <state width="1795" height="278" key="GridCell.Tab.0.right/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1598025863227" />
     <state width="1034" height="278" key="GridCell.Tab.0.right/79.27.1841.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1597840858805" />
     <state width="1795" height="344" key="GridCell.Tab.0.right/79.27.1841.1053/1920.0.1920.1080@79.27.1841.1053" timestamp="1597850500812" />
     <state width="1795" height="344" key="GridCell.Tab.1.bottom" timestamp="1597850500812">
@@ -207,10 +207,10 @@
       <screen x="79" y="27" width="1841" height="1053" />
     </state>
     <state x="666" y="446" width="646" height="229" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1598015156994" />
-    <state x="773" y="225" width="442" height="654" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1598015329551">
+    <state x="773" y="225" width="442" height="654" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1598082963125">
       <screen x="79" y="27" width="1841" height="1053" />
     </state>
-    <state x="773" y="225" width="442" height="654" key="com.intellij.testIntegration.createTest.CreateTestDialog/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1598015329551" />
+    <state x="773" y="225" width="442" height="654" key="com.intellij.testIntegration.createTest.CreateTestDialog/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1598082963125" />
     <state x="1920" y="0" width="1080" height="1011" maximized="true" key="dock-window-1" timestamp="1598001149365">
       <screen x="1920" y="0" width="1080" height="1920" />
     </state>

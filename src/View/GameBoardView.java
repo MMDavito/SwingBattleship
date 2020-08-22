@@ -96,7 +96,26 @@ public class GameBoardView {
         windowF.setPreferredSize(new Dimension(500, 500));
         windowF.setSize(500, 500);
         windowF.setLocationRelativeTo(null);
-        windowF.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        windowF.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                /*
+                The following is an unproper hack to allow restarting game without knowing Java GUI design.
+                But I am "pretty" sure javas garbage collector will release all resources.
+                 */
+                int res = JOptionPane.showConfirmDialog(null, "Do you want to restart?", "File",
+                        JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+                if (res == 0) {
+                    new WelcomeScreen().main(null);
+                    windowF.dispose();
+                } else if (res == 1) {
+                    System.exit(0);
+                } else {
+                    return;
+                }
+            }
+        });
+        windowF.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         windowF.setVisible(true);
     }
 }

@@ -79,6 +79,10 @@ public class GameGrid {
 
                     @Override
                     public void mouseEntered(MouseEvent mouseEvent) {
+                        if (isP1 && gameController.p2IsAi && gameController.isGameStarted() && !gameController.isP1Redrawn) {
+                            redraw();
+                            gameController.isP1Redrawn = true;
+                        }
                         if (gameController.isGameOver()) {
                             if (gameController.isPlayerDrawn(isP1)) return;
                             if (helperClass.ISDEBUG)

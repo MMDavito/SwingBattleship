@@ -16,6 +16,8 @@ public class GameController {
      */
     public boolean isP1GODrawn = false;//Is player1 game over drawn?
     public boolean isP2GODrawn = false;//Is player2 game over drawn?
+    public boolean isP1Redrawn = false;//used for if ai so it does not overload
+
 
     public Player player1;
     public Player player2;
@@ -41,9 +43,9 @@ public class GameController {
         ArrayList<Integer> p1Scores = player1.getFleetStatus();
         ArrayList<Integer> p2Scores = player2.getFleetStatus();
         for (int i = 0; i < p1Scores.size(); i++) {
-            p1StringScores.add(SHIP.values()[i].toString() + ":");
+            p1StringScores.add(SHIP.values()[i].toString() + "(" + SHIP.values()[i].getSize() + "):");
             p1StringScores.add(p1Scores.get(i).toString());
-            p2StringScores.add(SHIP.values()[i].toString() + ": ");
+            p2StringScores.add(SHIP.values()[i].toString() + "(" + SHIP.values()[i].getSize() + "):");
             p2StringScores.add(p2Scores.get(i).toString());
         }
         this.p1ScoreBoard.addAll(p1StringScores);
@@ -110,37 +112,37 @@ public class GameController {
                 isP1Turn = false;
                 if (p2IsAi) {
                     gameRound = 1;
+                    System.out.println("Round: " + gameRound);
                     ((AIPlayer) player2).placeAllShips();
                     player1.startGame();
                     player2.startGame();
-                    Coordinate coordinate = null;
-                    while (true) {
-                        coordinate = ((AIPlayer) player2).getRandomShot();
-                        if (player1.gameBoard.boardSquares[coordinate.getX()][coordinate.getY()] != null &&
-                                player1.gameBoard.boardSquares[coordinate.getX()][coordinate.getY()].isHit()) {
-                            continue;
-                        }
-                        break;
-                    }
-                    if (coordinate != null) player1.isShotHit(coordinate);
+                    isGameStarted = true;
+                    Coordinate shot = ((AIPlayer) player2).getRandomShot();
 
+                    if (shot == null) {
+                        System.out.println("AI is trying to shot at:");
+                        System.out.println(((AIPlayer) player2).getName());
+                        System.out.println("Shot is null");
+                        System.out.println("Is p2 inited?" + (player2.isGameStarted()));
+                        int size = ((AIPlayer) player2).getSizeQueue();
+                        System.out.println("Size of AI Queue: " + size);
+                    }
+                    player1.isShotHit(shot);
                     isP1Turn = true;
+                    isP1Redrawn = false;
+                    updateList();
                     return;
                 }
             } else if (isPlayerLoser(player2)) {
                 setGameOver();
             } else {
                 if (p2IsAi) {
-                    Coordinate coordinate = null;
-                    while (true) {
-                        coordinate = ((AIPlayer) player2).getRandomShot();
-                        if (player1.gameBoard.boardSquares[coordinate.getX()][coordinate.getY()] != null &&
-                                player1.gameBoard.boardSquares[coordinate.getX()][coordinate.getY()].isHit()) {
-                            continue;
-                        }
-                        break;
-                    }
-                    if (coordinate != null) player1.isShotHit(coordinate);
+                    player1.isShotHit(((AIPlayer) player2).getRandomShot());
+                    isP1Redrawn = false;
+                    isP1Turn = true;
+                    gameRound++;
+                    System.out.println("Round: " + gameRound);
+                    updateList();
                     return;
                 }
                 updateList();
@@ -149,6 +151,9 @@ public class GameController {
         }
         //Else is p2 turn
         else if (!isGameStarted) {
+            if (p2IsAi) {//TODO REMOVE:
+                throw new IllegalStateException("Should not happen, Ai turn");
+            }
             // Is not ai
             if (!player2.canGameStart()) return;
             isP1Turn = false;//Lets p2 guess first since already at keyboard
@@ -166,7 +171,6 @@ public class GameController {
             updateList();
             isP1Turn = true;
         }
-
     }
 
     public boolean isPlayerLoser(Player player) {

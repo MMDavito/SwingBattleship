@@ -46,7 +46,7 @@ public class Player {
     }
 
 
-    boolean isGameStarted() {
+    public boolean isGameStarted() {
         return isGameStarted;
     }
 

@@ -11,8 +11,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -46,37 +46,17 @@
     <key name="CreateTestDialog.RecentsKey">
       <recent name="Model" />
     </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="Model" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/Model" />
     </key>
   </component>
   <component name="RunManager" selected="Application.WelcomeScreen">
-    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="App" />
-      <module name="SwingBattleship" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="HighScoreScreen" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="View.HighScoreScreen" />
-      <module name="SwingBattleship" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="View.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="WelcomeScreen" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="View.WelcomeScreen" />
       <module name="SwingBattleship" />
@@ -86,6 +66,53 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AIPlayerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SwingBattleship" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Model" />
+      <option name="MAIN_CLASS_NAME" value="Model.AIPlayerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AIPlayerTest.getRandomShot" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SwingBattleship" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Model" />
+      <option name="MAIN_CLASS_NAME" value="Model.AIPlayerTest" />
+      <option name="METHOD_NAME" value="getRandomShot" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AIPlayerTest.placeAllShips" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SwingBattleship" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Model" />
+      <option name="MAIN_CLASS_NAME" value="Model.AIPlayerTest" />
+      <option name="METHOD_NAME" value="placeAllShips" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -105,28 +132,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PlayerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SwingBattleship" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Model" />
-      <option name="MAIN_CLASS_NAME" value="Model.PlayerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.WelcomeScreen" />
+        <item itemvalue="JUnit.AIPlayerTest.getRandomShot" />
+        <item itemvalue="JUnit.AIPlayerTest.placeAllShips" />
+        <item itemvalue="JUnit.AIPlayerTest" />
         <item itemvalue="JUnit.GameBoardTest" />
-        <item itemvalue="JUnit.PlayerTest" />
-        <item itemvalue="Application.HighScoreScreen" />
-        <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
   </component>
@@ -155,49 +167,53 @@
       <screen x="79" y="27" width="1841" height="1053" />
     </state>
     <state x="207" y="27" width="1565" height="1053" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1597930957340" />
-    <state width="1795" height="278" key="GridCell.Tab.0.bottom" timestamp="1598025621230">
+    <state width="1795" height="278" key="GridCell.Tab.0.bottom" timestamp="1598089665273">
       <screen x="79" y="27" width="1841" height="1053" />
     </state>
     <state width="1034" height="278" key="GridCell.Tab.0.bottom/79.27.1841.1053/1920.0.1080.1920@1920.0.1080.1920" timestamp="1597911175008" />
-    <state width="1795" height="278" key="GridCell.Tab.0.bottom/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1598025621230" />
+    <state width="1795" height="278" key="GridCell.Tab.0.bottom/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1598089665273" />
     <state width="1034" height="278" key="GridCell.Tab.0.bottom/79.27.1841.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1597840858805" />
     <state width="1795" height="344" key="GridCell.Tab.0.bottom/79.27.1841.1053/1920.0.1920.1080@79.27.1841.1053" timestamp="1597850500812" />
-    <state width="1795" height="278" key="GridCell.Tab.0.center" timestamp="1598025621230">
+    <state width="1795" height="278" key="GridCell.Tab.0.center" timestamp="1598089665273">
       <screen x="79" y="27" width="1841" height="1053" />
     </state>
     <state width="1034" height="278" key="GridCell.Tab.0.center/79.27.1841.1053/1920.0.1080.1920@1920.0.1080.1920" timestamp="1597911175008" />
-    <state width="1795" height="278" key="GridCell.Tab.0.center/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1598025621230" />
+    <state width="1795" height="278" key="GridCell.Tab.0.center/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1598089665273" />
     <state width="1034" height="278" key="GridCell.Tab.0.center/79.27.1841.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1597840858805" />
     <state width="1795" height="344" key="GridCell.Tab.0.center/79.27.1841.1053/1920.0.1920.1080@79.27.1841.1053" timestamp="1597850500812" />
-    <state width="1795" height="278" key="GridCell.Tab.0.left" timestamp="1598025621230">
+    <state width="1795" height="278" key="GridCell.Tab.0.left" timestamp="1598089665273">
       <screen x="79" y="27" width="1841" height="1053" />
     </state>
     <state width="1034" height="278" key="GridCell.Tab.0.left/79.27.1841.1053/1920.0.1080.1920@1920.0.1080.1920" timestamp="1597911175008" />
-    <state width="1795" height="278" key="GridCell.Tab.0.left/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1598025621230" />
+    <state width="1795" height="278" key="GridCell.Tab.0.left/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1598089665273" />
     <state width="1034" height="278" key="GridCell.Tab.0.left/79.27.1841.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1597840858805" />
     <state width="1795" height="344" key="GridCell.Tab.0.left/79.27.1841.1053/1920.0.1920.1080@79.27.1841.1053" timestamp="1597850500812" />
-    <state width="1795" height="278" key="GridCell.Tab.0.right" timestamp="1598025621230">
+    <state width="1795" height="278" key="GridCell.Tab.0.right" timestamp="1598089665273">
       <screen x="79" y="27" width="1841" height="1053" />
     </state>
     <state width="1034" height="278" key="GridCell.Tab.0.right/79.27.1841.1053/1920.0.1080.1920@1920.0.1080.1920" timestamp="1597911175008" />
-    <state width="1795" height="278" key="GridCell.Tab.0.right/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1598025621230" />
+    <state width="1795" height="278" key="GridCell.Tab.0.right/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1598089665273" />
     <state width="1034" height="278" key="GridCell.Tab.0.right/79.27.1841.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1597840858805" />
     <state width="1795" height="344" key="GridCell.Tab.0.right/79.27.1841.1053/1920.0.1920.1080@79.27.1841.1053" timestamp="1597850500812" />
-    <state width="1795" height="344" key="GridCell.Tab.1.bottom" timestamp="1597850500812">
+    <state width="1795" height="344" key="GridCell.Tab.1.bottom" timestamp="1598089271683">
       <screen x="79" y="27" width="1841" height="1053" />
     </state>
+    <state width="1795" height="344" key="GridCell.Tab.1.bottom/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1598089271683" />
     <state width="1795" height="344" key="GridCell.Tab.1.bottom/79.27.1841.1053/1920.0.1920.1080@79.27.1841.1053" timestamp="1597850500812" />
-    <state width="1795" height="344" key="GridCell.Tab.1.center" timestamp="1597850500812">
+    <state width="1795" height="344" key="GridCell.Tab.1.center" timestamp="1598089271683">
       <screen x="79" y="27" width="1841" height="1053" />
     </state>
+    <state width="1795" height="344" key="GridCell.Tab.1.center/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1598089271683" />
     <state width="1795" height="344" key="GridCell.Tab.1.center/79.27.1841.1053/1920.0.1920.1080@79.27.1841.1053" timestamp="1597850500812" />
-    <state width="1795" height="344" key="GridCell.Tab.1.left" timestamp="1597850500812">
+    <state width="1795" height="344" key="GridCell.Tab.1.left" timestamp="1598089271683">
       <screen x="79" y="27" width="1841" height="1053" />
     </state>
+    <state width="1795" height="344" key="GridCell.Tab.1.left/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1598089271683" />
     <state width="1795" height="344" key="GridCell.Tab.1.left/79.27.1841.1053/1920.0.1920.1080@79.27.1841.1053" timestamp="1597850500812" />
-    <state width="1795" height="344" key="GridCell.Tab.1.right" timestamp="1597850500812">
+    <state width="1795" height="344" key="GridCell.Tab.1.right" timestamp="1598089271683">
       <screen x="79" y="27" width="1841" height="1053" />
     </state>
+    <state width="1795" height="344" key="GridCell.Tab.1.right/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1598089271683" />
     <state width="1795" height="344" key="GridCell.Tab.1.right/79.27.1841.1053/1920.0.1920.1080@79.27.1841.1053" timestamp="1597850500812" />
     <state x="854" y="349" key="UIDesigner.ListEditorDialog" timestamp="1597929439180">
       <screen x="79" y="27" width="1841" height="1053" />
@@ -207,10 +223,10 @@
       <screen x="79" y="27" width="1841" height="1053" />
     </state>
     <state x="666" y="446" width="646" height="229" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1598015156994" />
-    <state x="773" y="225" width="442" height="654" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1598015329551">
+    <state x="773" y="225" width="442" height="654" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1598082963125">
       <screen x="79" y="27" width="1841" height="1053" />
     </state>
-    <state x="773" y="225" width="442" height="654" key="com.intellij.testIntegration.createTest.CreateTestDialog/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1598015329551" />
+    <state x="773" y="225" width="442" height="654" key="com.intellij.testIntegration.createTest.CreateTestDialog/79.27.1841.1053/1920.0.1080.1920@79.27.1841.1053" timestamp="1598082963125" />
     <state x="1920" y="0" width="1080" height="1011" maximized="true" key="dock-window-1" timestamp="1598001149365">
       <screen x="1920" y="0" width="1080" height="1920" />
     </state>
@@ -234,6 +250,9 @@
       <FILTER>Model.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/SwingBattleship$PlayerTest.ic" NAME="PlayerTest Coverage Results" MODIFIED="1598017773226" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Model.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/SwingBattleship$AIPlayerTest.ic" NAME="AIPlayerTest Coverage Results" MODIFIED="1598083110105" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>Model.*</FILTER>
     </SUITE>
   </component>
